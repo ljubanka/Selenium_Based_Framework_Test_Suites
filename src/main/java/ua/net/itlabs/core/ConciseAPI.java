@@ -5,8 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ua.net.itlabs.core.conditions.Condition;
+
+import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+import static ua.net.itlabs.core.WaitFor.waitFor;
+import static ua.net.itlabs.core.conditions.Conditions.visible;
 
 public class ConciseAPI {
     private static WebDriver driver;
@@ -24,11 +29,15 @@ public class ConciseAPI {
     }
 
     public static WebElement $(By locator){
-        return assertThat(visibilityOfElementLocated(locator));
+        return waitFor(locator).until(visible());
     }
 
     public static WebElement $(String cssSelector){
         return $(By.cssSelector(cssSelector));
+    }
+
+    public static List<WebElement> $$(By elementsLocator, Condition<List<WebElement>> waitForCondition) {
+        return waitFor(elementsLocator).until(waitForCondition);
     }
 
     public static By byText(String elementText) {

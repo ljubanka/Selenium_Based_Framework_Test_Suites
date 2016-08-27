@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import static ua.net.itlabs.core.ConciseAPI.*;
-import static ua.net.itlabs.core.CustomConditions.listNthElementHasText;
-import static ua.net.itlabs.core.CustomConditions.texts;
+import static ua.net.itlabs.core.deprecated.CustomConditions.listNthElementHasText;
+import static ua.net.itlabs.core.deprecated.CustomConditions.texts;
 
 public class Mails {
 

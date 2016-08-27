@@ -1,4 +1,4 @@
-package ua.net.itlabs.core;
+package ua.net.itlabs.core.conditions;
 
 
 import org.openqa.selenium.By;

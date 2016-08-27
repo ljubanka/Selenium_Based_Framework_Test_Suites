@@ -1,9 +1,10 @@
-package ua.net.itlabs.core;
+package ua.net.itlabs.core.deprecated;
 
 import com.google.common.base.Function;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import ua.net.itlabs.core.Helpers;
 
 import java.util.List;
 

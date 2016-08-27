@@ -1,12 +1,13 @@
 package ua.net.itlabs.core;
 
 
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.openqa.selenium.*;
+import ua.net.itlabs.core.conditions.Condition;
 
 
 public class WaitFor {
     public By locator;
+    private Throwable lastError;
 
     public WaitFor(By locator) {
         this.locator = locator;
@@ -20,7 +21,8 @@ public class WaitFor {
         return until(condition, Configuration.timeout*1000);
     }
 
-    public <V> V until(Condition<V> condition, long timeoutMs) throws WebDriverException{
+    public <V> V until(Condition<V> condition, long timeoutMs) {
+        lastError = null;
         final long startTime = System.currentTimeMillis();
 
         do {
@@ -29,14 +31,26 @@ public class WaitFor {
                 if (result != null) {
                     return result;
                 }
-            } catch (StaleElementReferenceException | ElementNotVisibleException | IndexOutOfBoundsException e) {
+            } catch (WebDriverException | IndexOutOfBoundsException e) {
+                lastError = e;
             }
 
             sleep(Configuration.pollingInterval);
         }
         while (System.currentTimeMillis() - startTime < timeoutMs);
 
-        throw new ElementNotFoundException(String.format("Condition %s not achieved while waiting with timeout of %s, Ms", condition.toString(), timeoutMs), "", "");
+        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", timeoutMs/1000, condition.toString()), lastError);
+    }
+
+    public <V> V until(Condition<V>... conditions) {
+        V result = null;
+        for (Condition<V> condition: conditions) {
+            result = until(condition);
+            if (result == null) {
+                return null;
+            }
+        }
+        return result;
     }
 
     private void sleep(int milliseconds) {
