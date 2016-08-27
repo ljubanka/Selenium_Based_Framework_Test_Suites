@@ -33,7 +33,7 @@ public class ConciseAPI {
     }
 
     public static WebElement $(String cssSelector){
-        return $(By.cssSelector(cssSelector));
+        return $(byCSS(cssSelector));
     }
 
     public static List<WebElement> $$(By elementsLocator, Condition<List<WebElement>> waitForCondition) {
