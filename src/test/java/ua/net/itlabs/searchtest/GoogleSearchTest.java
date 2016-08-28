@@ -8,11 +8,11 @@ import ua.net.itlabs.testconfigs.BaseTest;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;
 import static ua.net.itlabs.core.ConciseAPI.byCSS;
 import static ua.net.itlabs.core.ConciseAPI.open;
-import static ua.net.itlabs.core.conditions.Conditions.minimumSizeOf;
-import static ua.net.itlabs.core.conditions.Conditions.text;
+//import static ua.net.itlabs.core.conditions.CollectionConditions.minimumSizeOf;
 import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.ConciseAPI.*;
-import static ua.net.itlabs.core.conditions.Conditions.sizeOf;
+import static ua.net.itlabs.core.conditions.CollectionConditions.sizeOf;
+//import static ua.net.itlabs.core.conditions.ElementConditions.text;
 
 public class GoogleSearchTest extends BaseTest {
 
@@ -20,35 +20,35 @@ public class GoogleSearchTest extends BaseTest {
     public void testSearchAndFollowLink() {
         open("http://google.com/ncr");
 
-        search("Selenium automates browsers");
+        //search("Selenium automates browsers");
 
         waitFor(byCSS(searchResults)).until(sizeOf(10));
-        waitFor(byCSS(searchResults + ":first-child")).until(text("Selenium automates browsers"));
-
-        followNthLink(0);
-        assertThat(urlContains("http://www.seleniumhq.org/"));
+//        waitFor(byCSS(searchResults + ":first-child")).until(text("Selenium automates browsers"));
+//
+//        followNthLink(0);
+//        assertThat(urlContains("http://www.seleniumhq.org/"));
     }
 
-    @Test
-    public void testFollowResultLink() {
-        open("http://google.com/ncr");
-
-        search("Selenium automates browsers");
-
-        followNthLink(1);
-        assertThat(urlContains("http://www.seleniumhq.org/"));
-    }
-
+    //@Test
+//    public void testFollowResultLink() {
+//        open("http://google.com/ncr");
+//
+//        search("Selenium automates browsers");
+//
+//        followNthLink(1);
+//        assertThat(urlContains("http://www.seleniumhq.org/"));
+//    }
+//
     public String searchResults = ".srg>.g";
-
-    public void followNthLink(int index) {
-        waitFor(byCSS(searchResults)).until(minimumSizeOf(index+1)); // isn't this line extra now?
-        $$(byCSS(searchResults), minimumSizeOf(index+1)).get(index).findElement(byCSS(".r>a")).click();
-    }
-
-    public void search(String queryText) {
-        $(By.name("q")).clear();
-        $(By.name("q")).sendKeys(queryText + Keys.ENTER);
-    }
+//
+//    public void followNthLink(int index) {
+//        waitFor(byCSS(searchResults)).until(minimumSizeOf(index+1)); // isn't this line extra now?
+//        $$(byCSS(searchResults), minimumSizeOf(index+1)).get(index).findElement(byCSS(".r>a")).click();
+//    }
+//
+//    public void search(String queryText) {
+//        $(By.name("q")).clear();
+//        $(By.name("q")).sendKeys(queryText + Keys.ENTER);
+//    }
 
 }

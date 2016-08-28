@@ -9,9 +9,8 @@ import ua.net.itlabs.core.conditions.Condition;
 
 import java.util.List;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 import static ua.net.itlabs.core.WaitFor.waitFor;
-import static ua.net.itlabs.core.conditions.Conditions.visible;
+import static ua.net.itlabs.core.conditions.ElementConditions.visible;
 
 public class ConciseAPI {
     private static WebDriver driver;
