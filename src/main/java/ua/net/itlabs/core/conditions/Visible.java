@@ -16,6 +16,7 @@ public class Visible extends ElementCondition {
 
     @Override
     public WebElement apply(By locator) {
+        this.locator = locator;
         element = getWebDriver().findElement(locator);
         return element.isDisplayed()?element:null;
     }
@@ -42,7 +43,7 @@ public class Visible extends ElementCondition {
 
     @Override
     public String actualResultString() {
-        return String.valueOf(element.isDisplayed());
+        return element == null?String.valueOf(element.isDisplayed()):"null";
     }
 
 }

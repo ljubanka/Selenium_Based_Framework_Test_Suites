@@ -36,8 +36,6 @@ public class SizeOf extends CollectionCondition {
         return getTexts(elements);
     }
 
-
-
     @Override
     public String locatorString() {
         return locator.toString().split(" ")[1];

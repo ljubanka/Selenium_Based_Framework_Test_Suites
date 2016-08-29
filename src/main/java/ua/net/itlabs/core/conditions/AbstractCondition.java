@@ -8,6 +8,7 @@ import static ua.net.itlabs.core.Helpers.getTexts;
 
 public abstract class AbstractCondition<V> implements Condition<V>{
 
+    //public abstract V check(By locator);
     public abstract List<String> elementsString();
     //public abstract String elementString();
 
@@ -16,6 +17,16 @@ public abstract class AbstractCondition<V> implements Condition<V>{
     public abstract String resultDescription();
     public abstract String expectedResultString();
     public abstract String actualResultString();
+
+//    public V apply(By locator) {
+//        try {
+//            check(locator);
+//        }
+//        catch () {
+//
+//        }
+//
+//    }
 
     public String toString() {
 

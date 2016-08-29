@@ -11,8 +11,8 @@ public class CollectionConditions {
         return new SizeOf(expectedSize);
     }
 
-//    public static Condition<List<WebElement>> minimumSizeOf(int expectedSize) {
-//        return new MinimumSizeOf(expectedSize);
-//    }
+    public static Condition<List<WebElement>> minimumSizeOf(int expectedSize) {
+        return new MinimumSizeOf(expectedSize);
+    }
 
 }
