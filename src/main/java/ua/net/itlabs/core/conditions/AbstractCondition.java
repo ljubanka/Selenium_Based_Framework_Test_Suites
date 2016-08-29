@@ -8,31 +8,32 @@ import static ua.net.itlabs.core.Helpers.getTexts;
 
 public abstract class AbstractCondition<V> implements Condition<V>{
 
-    //public abstract V check(By locator);
+    protected By locator;
+    public abstract V getWrappedEntity();
+    public abstract V check(V entity);
     public abstract List<String> elementsString();
-    //public abstract String elementString();
-
     public abstract String elementOrElements();
-    public abstract String locatorString();
     public abstract String resultDescription();
     public abstract String expectedResultString();
     public abstract String actualResultString();
 
-//    public V apply(By locator) {
-//        try {
-//            check(locator);
-//        }
-//        catch () {
-//
-//        }
-//
-//    }
+    public V apply(By locator) {
+        this.locator = locator;
+        try {
+            V entity = getWrappedEntity();
+            return check(entity);
+        }
+        catch (Exception e) {
+            throw e;
+        }
+
+    }
 
     public String toString() {
 
         return String.format(this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".")+1) +
                         "\nfor %s %s, found by: %s locator \nexpected %s to be %s,\n" +
-                "actual %s is %s", elementOrElements(), elementsString(), locatorString(), resultDescription(),
+                "actual %s is %s", elementOrElements(), elementsString(), locator.toString().split(" ")[1], resultDescription(),
                     expectedResultString(), resultDescription(), actualResultString());
     }
 

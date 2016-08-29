@@ -11,17 +11,17 @@ import java.util.List;
 public class Text extends ElementCondition {
     private String actualText;
     private String expectedText;
-    private By locator;
-    private WebElement element;
+    //private By locator;
+    //private WebElement element;
 
     public Text(String expectedText) {
         this.expectedText = expectedText;
     }
 
     @Override
-    public WebElement apply(By locator) {
-        this.locator = locator;
-        element = ConciseAPI.getWebDriver().findElement(locator);
+    public WebElement check(WebElement element) {
+//        this.locator = locator;
+//        element = getWrappedEntity();
         actualText = element.getText();
         if (actualText.contains(expectedText)) {
             return element;
@@ -31,14 +31,9 @@ public class Text extends ElementCondition {
 
     @Override
     public List<String> elementsString() {
-        return new ArrayList<String>(Arrays.asList(String.valueOf(element)));
+        return new ArrayList<String>(Arrays.asList(String.valueOf(getWrappedEntity())));
         //it returns smth like [[[FirefoxDriver: firefox on WINDOWS (81663880-5d32-4d91-a3de-c0819dfb2037)] -> css selector: .srg>.g:first-child]],
         // seems not very nice
-    }
-
-    @Override
-    public String locatorString() {
-        return locator.toString().split(" ")[1];
     }
 
     @Override

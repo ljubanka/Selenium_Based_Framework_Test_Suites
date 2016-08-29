@@ -11,24 +11,19 @@ import java.util.List;
 import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
 
 public class Visible extends ElementCondition {
-    private WebElement element;
-    private By locator;
+    //private WebElement element;
+    //private By locator;
 
     @Override
-    public WebElement apply(By locator) {
-        this.locator = locator;
-        element = getWebDriver().findElement(locator);
+    public WebElement check(WebElement element) {
+//        this.locator = locator;
+//        element = getWrappedEntity();
         return element.isDisplayed()?element:null;
     }
 
     @Override
     public List<String> elementsString() {
-        return new ArrayList<String>(Arrays.asList(String.valueOf(element)));
-    }
-
-    @Override
-    public String locatorString() {
-        return locator.toString().split(" ")[1];
+        return new ArrayList<String>(Arrays.asList(String.valueOf(getWrappedEntity())));
     }
 
     @Override
@@ -43,7 +38,7 @@ public class Visible extends ElementCondition {
 
     @Override
     public String actualResultString() {
-        return element == null?String.valueOf(element.isDisplayed()):"null";
+        return getWrappedEntity() == null?String.valueOf(getWrappedEntity().isDisplayed()):"null";
     }
 
 }

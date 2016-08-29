@@ -13,17 +13,18 @@ import static ua.net.itlabs.core.Helpers.getTexts;
 public class SizeOf extends CollectionCondition {
     private int listSize;
     private int expectedSize;
-    private List<WebElement> elements;
-    private By locator;
+    //private List<WebElement> elements;
+    //private By locator;
 
     public SizeOf(int expectedSize) {
         this.expectedSize = expectedSize;
     }
 
     @Override
-    public List<WebElement> apply(By locator) {
-        this.locator = locator;
-        elements = getWebDriver().findElements(locator);
+    public List<WebElement> check(List<WebElement> elements) {
+        //this.locator = locator;
+
+        //elements = getWrappedEntity();
         listSize = elements.size();
         return listSize == expectedSize?elements:null;
     }
@@ -33,12 +34,7 @@ public class SizeOf extends CollectionCondition {
 //    }
     @Override
     public List<String> elementsString() {
-        return getTexts(elements);
-    }
-
-    @Override
-    public String locatorString() {
-        return locator.toString().split(" ")[1];
+        return getTexts(getWrappedEntity());
     }
 
     @Override
