@@ -12,6 +12,7 @@ import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.ConciseAPI.*;
 import static ua.net.itlabs.core.conditions.CollectionConditions.minimumSizeOf;
 import static ua.net.itlabs.core.conditions.CollectionConditions.sizeOf;
+import static ua.net.itlabs.core.conditions.ElementConditions.exactText;
 import static ua.net.itlabs.core.conditions.ElementConditions.text;
 
 public class GoogleSearchTest extends BaseTest {

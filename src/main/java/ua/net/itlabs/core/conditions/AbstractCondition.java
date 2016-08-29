@@ -1,40 +1,39 @@
 package ua.net.itlabs.core.conditions;
 
 import org.openqa.selenium.By;
-
-import java.util.List;
-
-import static ua.net.itlabs.core.Helpers.getTexts;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriverException;
 
 public abstract class AbstractCondition<V> implements Condition<V>{
 
     protected By locator;
     public abstract V getWrappedEntity();
     public abstract V check(V entity);
-    public abstract List<String> elementsString();
-    public abstract String elementOrElements();
-    public abstract String resultDescription();
-    public abstract String expectedResultString();
-    public abstract String actualResultString();
+    public abstract String identity();
+    public abstract String expected();
+    public abstract String actual();
 
     public V apply(By locator) {
+        //Throwable lastError = null;
         this.locator = locator;
         try {
-            V entity = getWrappedEntity();
-            return check(entity);
+            V result = check(getWrappedEntity());
+            if (result != null) {
+                return result;
+            }
         }
-        catch (Exception e) {
-            throw e;
+        catch (WebDriverException | IndexOutOfBoundsException e) {
+            //lastError = e;
         }
-
+        return null;
+        //throw new TimeoutException(String.format("Timed out after ___ seconds waiting for %s", getClass().getSimpleName()), lastError);
     }
 
     public String toString() {
-
-        return String.format(this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".")+1) +
-                        "\nfor %s %s, found by: %s locator \nexpected %s to be %s,\n" +
-                "actual %s is %s", elementOrElements(), elementsString(), locator.toString().split(" ")[1], resultDescription(),
-                    expectedResultString(), resultDescription(), actualResultString());
+        return String.format(getClass().getSimpleName() +
+                "\nfor " + identity() + " found by " + locator +
+                (expected() == "" ? "" : "\nexpected: " + expected()) +
+                (actual() == "" ? "" : "\nactual: " + actual()));
     }
 
 }

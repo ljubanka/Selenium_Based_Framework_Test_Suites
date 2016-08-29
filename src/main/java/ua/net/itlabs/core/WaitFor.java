@@ -1,13 +1,10 @@
 package ua.net.itlabs.core;
 
-
 import org.openqa.selenium.*;
 import ua.net.itlabs.core.conditions.Condition;
 
-
 public class WaitFor {
     public By locator;
-    private Throwable lastError;
 
     public WaitFor(By locator) {
         this.locator = locator;
@@ -17,29 +14,30 @@ public class WaitFor {
         return new WaitFor(locator);
     }
 
-    public <V> V until(Condition<V> condition) throws WebDriverException {
+    public <V> V until(Condition<V> condition) {
         return until(condition, Configuration.timeout*1000);
     }
 
     public <V> V until(Condition<V> condition, long timeoutMs) {
-        lastError = null;
+        //Throwable lastError = null;
         final long startTime = System.currentTimeMillis();
 
         do {
-            try {
+            //try {
                 V result = condition.apply(locator);
                 if (result != null) {
                     return result;
                 }
-            } catch (WebDriverException | IndexOutOfBoundsException e) {
-                lastError = e;
-            }
+//            } catch (WebDriverException | IndexOutOfBoundsException e) {
+//                lastError = e;
+//            }
 
             sleep(Configuration.pollingInterval);
         }
         while (System.currentTimeMillis() - startTime < timeoutMs);
 
-        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", timeoutMs/1000, condition.toString()), lastError);
+        //return null;
+        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", timeoutMs/1000, condition.toString()));
     }
 
     public <V> V until(Condition<V>... conditions) {
@@ -61,4 +59,5 @@ public class WaitFor {
             throw new RuntimeException(e);
         }
     }
+
 }
