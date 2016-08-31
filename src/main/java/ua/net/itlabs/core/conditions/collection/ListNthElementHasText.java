@@ -26,7 +26,7 @@ public class ListNthElementHasText extends CollectionCondition {
 
     @Override
     public String expected() {
-        return ("element #" + index + " = " + expectedText);
+        return ("element[" + index + "] = " + expectedText);
     }
 
     @Override

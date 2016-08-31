@@ -7,8 +7,8 @@ import ua.net.itlabs.core.Helpers;
 import java.util.List;
 
 public class Texts extends CollectionCondition {
-    private List<String> actualTexts;
-    private String[] expectedTexts;
+    protected List<String> actualTexts;
+    protected String[] expectedTexts;
 
     public Texts(String... expectedTexts) {
         this.expectedTexts = expectedTexts;
@@ -16,6 +16,10 @@ public class Texts extends CollectionCondition {
 
     @Override
     public List<WebElement> check(List<WebElement> elements) {
+        return checkElements(elements);
+    }
+
+    public List<WebElement> checkElements(List<WebElement> elements) {
         actualTexts = Helpers.getTexts(elements);
         if (actualTexts.size() != expectedTexts.length) {
             return null;

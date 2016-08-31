@@ -3,8 +3,8 @@ package ua.net.itlabs.core.conditions.element;
 import org.openqa.selenium.WebElement;
 
 public class Text extends ElementCondition {
-    private String actualText;
-    private String expectedText;
+    protected String actualText;
+    protected String expectedText;
 
     public Text(String expectedText) {
         this.expectedText = expectedText;
@@ -12,7 +12,10 @@ public class Text extends ElementCondition {
 
     @Override
     public WebElement check(WebElement element) {
+        return checkElement(element);
+    }
 
+    public WebElement checkElement(WebElement element) {
         actualText = element.getText();
         if (actualText.contains(expectedText)) {
             return element;

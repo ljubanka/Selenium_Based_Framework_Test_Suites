@@ -14,19 +14,12 @@ public abstract class AbstractCondition<V> implements Condition<V>{
     public abstract String actual();
 
     public V apply(By locator) {
-        //Throwable lastError = null;
         this.locator = locator;
-        try {
-            V result = check(getWrappedEntity());
-            if (result != null) {
-                return result;
-            }
-        }
-        catch (WebDriverException | IndexOutOfBoundsException e) {
-            //lastError = e;
+        V result = check(getWrappedEntity());
+        if (result != null) {
+            return result;
         }
         return null;
-        //throw new TimeoutException(String.format("Timed out after ___ seconds waiting for %s", getClass().getSimpleName()), lastError);
     }
 
     public String toString() {

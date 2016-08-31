@@ -19,25 +19,24 @@ public class WaitFor {
     }
 
     public <V> V until(Condition<V> condition, long timeoutMs) {
-        //Throwable lastError = null;
+        Throwable lastError = null;
         final long startTime = System.currentTimeMillis();
 
         do {
-            //try {
+            try {
                 V result = condition.apply(locator);
                 if (result != null) {
                     return result;
                 }
-//            } catch (WebDriverException | IndexOutOfBoundsException e) {
-//                lastError = e;
-//            }
+            } catch (WebDriverException | IndexOutOfBoundsException e) {
+                lastError = e;
+            }
 
             sleep(Configuration.pollingInterval);
         }
         while (System.currentTimeMillis() - startTime < timeoutMs);
 
-        //return null;
-        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", timeoutMs/1000, condition.toString()));
+        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", timeoutMs/1000, condition.toString()), lastError);
     }
 
     public <V> V until(Condition<V>... conditions) {

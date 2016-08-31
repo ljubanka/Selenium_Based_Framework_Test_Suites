@@ -10,6 +10,7 @@ import static ua.net.itlabs.core.ConciseAPI.byCSS;
 import static ua.net.itlabs.core.ConciseAPI.open;
 import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.ConciseAPI.*;
+import static ua.net.itlabs.core.conditions.CollectionConditions.listNthElementHasText;
 import static ua.net.itlabs.core.conditions.CollectionConditions.minimumSizeOf;
 import static ua.net.itlabs.core.conditions.CollectionConditions.sizeOf;
 import static ua.net.itlabs.core.conditions.ElementConditions.exactText;
@@ -24,7 +25,7 @@ public class GoogleSearchTest extends BaseTest {
         search("Selenium automates browsers");
 
         waitFor(byCSS(searchResults)).until(sizeOf(10));
-        waitFor(byCSS(searchResults + ":first-child")).until(text("Selenium automates browsers"));
+        waitFor(byCSS(searchResults)).until(listNthElementHasText(0, "Selenium automates browsers"));
 
         followNthLink(0);
         assertThat(urlContains("http://www.seleniumhq.org/"));

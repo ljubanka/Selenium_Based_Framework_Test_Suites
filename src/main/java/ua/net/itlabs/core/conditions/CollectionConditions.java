@@ -1,10 +1,7 @@
 package ua.net.itlabs.core.conditions;
 
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.collection.ListNthElementHasText;
-import ua.net.itlabs.core.conditions.collection.MinimumSizeOf;
-import ua.net.itlabs.core.conditions.collection.SizeOf;
-import ua.net.itlabs.core.conditions.collection.Texts;
+import ua.net.itlabs.core.conditions.collection.*;
 
 import java.util.List;
 
@@ -20,6 +17,10 @@ public class CollectionConditions {
 
     public static Condition<List<WebElement>> texts(String... expectedTexts) {
         return new Texts(expectedTexts);
+    }
+
+    public static Condition<List<WebElement>> exactTexts(String... expectedTexts) {
+        return new ExactTexts(expectedTexts);
     }
 
     public static Condition<List<WebElement>> listNthElementHasText(int index, String expectedText) {

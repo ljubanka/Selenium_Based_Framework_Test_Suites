@@ -4,8 +4,8 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class SizeOf extends CollectionCondition {
-    private int listSize;
-    private int expectedSize;
+    protected int listSize;
+    protected int expectedSize;
 
     public SizeOf(int expectedSize) {
         this.expectedSize = expectedSize;
@@ -13,6 +13,10 @@ public class SizeOf extends CollectionCondition {
 
     @Override
     public List<WebElement> check(List<WebElement> elements) {
+        return checkElements(elements);
+    }
+
+    public List<WebElement> checkElements(List<WebElement> elements) {
         listSize = elements.size();
         return listSize == expectedSize?elements:null;
     }

@@ -13,7 +13,7 @@ public class Visible extends ElementCondition {
 
     @Override
     public String expected() {
-        return "visible (true)";
+        return "true";
     }
 
     @Override
