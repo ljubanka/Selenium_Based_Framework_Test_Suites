@@ -5,7 +5,7 @@ import org.openqa.selenium.Keys;
 
 import static ua.net.itlabs.core.ConciseAPI.*;
 import static ua.net.itlabs.core.WaitFor.waitFor;
-import static ua.net.itlabs.core.conditions.CollectionConditions.listNthElementHasText;
+import static ua.net.itlabs.core.conditions.CollectionConditions.nthElementText;
 import static ua.net.itlabs.core.conditions.CollectionConditions.texts;
 
 public class Mails {
@@ -18,15 +18,17 @@ public class Mails {
     }
 
     public  static void assertMail(int index, String text) {
-        waitFor(emails).until(listNthElementHasText(index, text));
+        $$(emails).shouldHave(nthElementText(index, text));
+        //waitFor(emails).until(listNthElementHasText(index, text));
     }
 
     public static void assertMails(String... emailTexts) {
-        waitFor(emails).until(texts(emailTexts));
+        $$(emails).shouldHave(texts(emailTexts));
+        //waitFor(emails).until(texts(emailTexts));
     }
 
     public static void searchBySubject(String text) {
-        $(By.name("q")).sendKeys("subject: " + text + Keys.ENTER);
+        $(By.name("q")).setValue("subject: " + text);
     }
 
     public static By emails = byCSS("[role='main'] .zA");

@@ -7,9 +7,9 @@ public class Present extends ElementCondition {
     private boolean isPresent;
 
     @Override
-    public WebElement check(WebElement element) {
-        isPresent = (element!=null);
-        return isPresent?element:null;
+    public WebElement check(WebElement wrappedEntity) {
+        isPresent = (wrappedEntity !=null);
+        return isPresent? wrappedEntity :null;
     }
 
     @Override

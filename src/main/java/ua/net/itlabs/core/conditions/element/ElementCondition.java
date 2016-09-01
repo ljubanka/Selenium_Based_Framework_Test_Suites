@@ -12,9 +12,9 @@ public abstract class ElementCondition extends AbstractCondition<WebElement> {
         return "element";
     }
 
-    @Override
-    public WebElement getWrappedEntity() {
-        return getWebDriver().findElement(locator);
-    }
+//    @Override
+//    public WebElement getWrappedEntity() {
+//        return getWebDriver().findElement(locator);
+//    }
 
 }

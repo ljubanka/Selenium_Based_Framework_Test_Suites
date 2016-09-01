@@ -23,8 +23,8 @@ public class CollectionConditions {
         return new ExactTexts(expectedTexts);
     }
 
-    public static Condition<List<WebElement>> listNthElementHasText(int index, String expectedText) {
-        return new ListNthElementHasText(index, expectedText);
+    public static Condition<List<WebElement>> nthElementText(int index, String expectedText) {
+        return new NthElementText(index, expectedText);
     }
 
 }

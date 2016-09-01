@@ -5,21 +5,21 @@ import ua.net.itlabs.core.Helpers;
 
 import java.util.List;
 
-public class ListNthElementHasText extends CollectionCondition {
+public class NthElementText extends CollectionCondition {
     private List<String> actualTexts;
     private String expectedText;
     private int index;
 
-    public ListNthElementHasText(int index, String expectedText) {
+    public NthElementText(int index, String expectedText) {
         this.index = index;
         this.expectedText = expectedText;
     }
 
     @Override
-    public List<WebElement> check(List<WebElement> elements) {
-        actualTexts = Helpers.getTexts(elements);
+    public List<WebElement> check(List<WebElement> wrappedEntity) {
+        actualTexts = Helpers.getTexts(wrappedEntity);
         if (actualTexts.get(index).contains(expectedText)) {
-            return elements;
+            return wrappedEntity;
         }
         return null;
     }

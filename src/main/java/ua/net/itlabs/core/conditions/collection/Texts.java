@@ -15,8 +15,8 @@ public class Texts extends CollectionCondition {
     }
 
     @Override
-    public List<WebElement> check(List<WebElement> elements) {
-        actualTexts = Helpers.getTexts(elements);
+    public List<WebElement> check(List<WebElement> wrappedEntity) {
+        actualTexts = Helpers.getTexts(wrappedEntity);
         if (actualTexts.size() != expectedTexts.length) {
             return null;
         }
@@ -25,7 +25,7 @@ public class Texts extends CollectionCondition {
                 return null;
             }
         }
-        return elements;
+        return wrappedEntity;
     }
 
     public boolean checkElement(int index) {

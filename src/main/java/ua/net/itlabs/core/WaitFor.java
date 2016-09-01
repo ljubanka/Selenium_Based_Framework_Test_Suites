@@ -2,16 +2,22 @@ package ua.net.itlabs.core;
 
 import org.openqa.selenium.*;
 import ua.net.itlabs.core.conditions.Condition;
+import ua.net.itlabs.core.elements.LazyElement;
+import ua.net.itlabs.core.elements.LazyEntity;
 
 public class WaitFor {
-    public By locator;
+    public LazyEntity entity;
 
-    public WaitFor(By locator) {
-        this.locator = locator;
+    public WaitFor(LazyEntity entity) {
+        this.entity = entity;
     }
 
-    public static WaitFor waitFor(By locator) {
-        return new WaitFor(locator);
+    public WaitFor(By locator) {
+        this.entity = new LazyElement(locator);
+    }
+
+    public static WaitFor waitFor(LazyEntity entity) {
+        return new WaitFor(entity);
     }
 
     public <V> V until(Condition<V> condition) {
@@ -24,7 +30,7 @@ public class WaitFor {
 
         do {
             try {
-                V result = condition.apply(locator);
+                V result = condition.apply(entity);
                 if (result != null) {
                     return result;
                 }

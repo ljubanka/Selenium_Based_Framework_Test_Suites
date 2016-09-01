@@ -12,9 +12,9 @@ public class SizeOf extends CollectionCondition {
     }
 
     @Override
-    public List<WebElement> check(List<WebElement> elements) {
-        listSize = elements.size();
-        return listSize == expectedSize?elements:null;
+    public List<WebElement> check(List<WebElement> wrappedEntity) {
+        listSize = wrappedEntity.size();
+        return listSize == expectedSize? wrappedEntity :null;
     }
 
     @Override

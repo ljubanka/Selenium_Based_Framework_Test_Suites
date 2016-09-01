@@ -11,10 +11,10 @@ public class Text extends ElementCondition {
     }
 
     @Override
-    public WebElement check(WebElement element) {
-        actualText = element.getText();
+    public WebElement check(WebElement wrappedEntity) {
+        actualText = wrappedEntity.getText();
         if (actualText.contains(expectedText)) {
-            return element;
+            return wrappedEntity;
         }
         return null;
     }

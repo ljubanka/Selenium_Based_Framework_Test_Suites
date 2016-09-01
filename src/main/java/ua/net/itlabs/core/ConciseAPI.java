@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ua.net.itlabs.core.conditions.Condition;
+import ua.net.itlabs.core.elements.LazyCollection;
+import ua.net.itlabs.core.elements.LazyElement;
 
 import java.util.List;
 
@@ -27,16 +29,16 @@ public class ConciseAPI {
         getWebDriver().get(url);
     }
 
-    public static WebElement $(By locator){
-        return waitFor(locator).until(visible());
+    public static LazyElement $(By locator){
+        return new LazyElement(locator);//waitFor(locator).until(visible());
     }
 
-    public static WebElement $(String cssSelector){
+    public static LazyElement $(String cssSelector){
         return $(byCSS(cssSelector));
     }
 
-    public static List<WebElement> $$(By elementsLocator, Condition<List<WebElement>> waitForCondition) {
-        return waitFor(elementsLocator).until(waitForCondition);
+    public static LazyCollection $$(By elementsLocator) {//}, Condition<List<WebElement>> waitForCondition) {
+        return new LazyCollection(elementsLocator); //waitFor(elementsLocator).until(waitForCondition);
     }
 
     public static By byText(String elementText) {

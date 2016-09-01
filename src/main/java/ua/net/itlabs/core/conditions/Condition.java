@@ -1,7 +1,8 @@
 package ua.net.itlabs.core.conditions;
 
-import org.openqa.selenium.By;
+import ua.net.itlabs.core.elements.LazyElement;
+import ua.net.itlabs.core.elements.LazyEntity;
 
 public interface Condition<V> {
-    V apply(By locator);
+    V apply(LazyEntity entity);
 }

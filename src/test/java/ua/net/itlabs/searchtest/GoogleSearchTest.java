@@ -3,6 +3,8 @@ package ua.net.itlabs.searchtest;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import ua.net.itlabs.core.elements.LazyElement;
 import ua.net.itlabs.testconfigs.BaseTest;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;
@@ -10,9 +12,7 @@ import static ua.net.itlabs.core.ConciseAPI.byCSS;
 import static ua.net.itlabs.core.ConciseAPI.open;
 import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.ConciseAPI.*;
-import static ua.net.itlabs.core.conditions.CollectionConditions.listNthElementHasText;
-import static ua.net.itlabs.core.conditions.CollectionConditions.minimumSizeOf;
-import static ua.net.itlabs.core.conditions.CollectionConditions.sizeOf;
+import static ua.net.itlabs.core.conditions.CollectionConditions.*;
 
 public class GoogleSearchTest extends BaseTest {
 
@@ -21,9 +21,8 @@ public class GoogleSearchTest extends BaseTest {
         open("http://google.com/ncr");
 
         search("Selenium automates browsers");
-
-        waitFor(byCSS(searchResults)).until(sizeOf(10));
-        waitFor(byCSS(searchResults)).until(listNthElementHasText(0, "Selenium automates browsers"));
+        $$(byCSS(searchResults)).shouldHave(sizeOf(10));
+        $$(byCSS(searchResults)).shouldHave(nthElementText(0, "Selenium automates browsers"));
 
         followNthLink(0);
         assertThat(urlContains("http://www.seleniumhq.org/"));
@@ -42,13 +41,12 @@ public class GoogleSearchTest extends BaseTest {
     public String searchResults = ".srg>.g";
 
     public void followNthLink(int index) {
-        waitFor(byCSS(searchResults)).until(minimumSizeOf(index+1));
-        $$(byCSS(searchResults), minimumSizeOf(index+1)).get(index).findElement(byCSS(".r>a")).click();
+        $$(byCSS(searchResults)).shouldHave(minimumSizeOf(index+1));
+        $$(byCSS(searchResults)).shouldHave(minimumSizeOf(index+1)).get(index).findElement(byCSS(".r>a")).click();
     }
 
     public void search(String queryText) {
-        $(By.name("q")).clear();
-        $(By.name("q")).sendKeys(queryText + Keys.ENTER);
+        $(By.name("q")).setValue(queryText);
     }
 
 }
