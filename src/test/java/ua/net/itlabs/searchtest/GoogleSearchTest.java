@@ -13,8 +13,6 @@ import static ua.net.itlabs.core.ConciseAPI.*;
 import static ua.net.itlabs.core.conditions.CollectionConditions.listNthElementHasText;
 import static ua.net.itlabs.core.conditions.CollectionConditions.minimumSizeOf;
 import static ua.net.itlabs.core.conditions.CollectionConditions.sizeOf;
-import static ua.net.itlabs.core.conditions.ElementConditions.exactText;
-import static ua.net.itlabs.core.conditions.ElementConditions.text;
 
 public class GoogleSearchTest extends BaseTest {
 
@@ -44,7 +42,7 @@ public class GoogleSearchTest extends BaseTest {
     public String searchResults = ".srg>.g";
 
     public void followNthLink(int index) {
-        waitFor(byCSS(searchResults)).until(minimumSizeOf(index+1)); // isn't this line extra now?
+        waitFor(byCSS(searchResults)).until(minimumSizeOf(index+1));
         $$(byCSS(searchResults), minimumSizeOf(index+1)).get(index).findElement(byCSS(".r>a")).click();
     }
 

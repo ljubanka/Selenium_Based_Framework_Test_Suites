@@ -2,6 +2,7 @@ package ua.net.itlabs.core.conditions;
 
 import org.openqa.selenium.WebElement;
 import ua.net.itlabs.core.conditions.element.ExactText;
+import ua.net.itlabs.core.conditions.element.Present;
 import ua.net.itlabs.core.conditions.element.Text;
 import ua.net.itlabs.core.conditions.element.Visible;
 
@@ -14,7 +15,12 @@ public class ElementConditions {
         return new ExactText(expectedText);
     }
 
+    public static Condition<WebElement> present() {
+        return new Present();
+    }
+
     public static Condition<WebElement> visible() {
         return new Visible();
     }
+
 }

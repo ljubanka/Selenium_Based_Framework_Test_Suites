@@ -16,20 +16,20 @@ public class Texts extends CollectionCondition {
 
     @Override
     public List<WebElement> check(List<WebElement> elements) {
-        return checkElements(elements);
-    }
-
-    public List<WebElement> checkElements(List<WebElement> elements) {
         actualTexts = Helpers.getTexts(elements);
         if (actualTexts.size() != expectedTexts.length) {
             return null;
         }
         for (int i = 0; i < actualTexts.size(); i++) {
-            if (!actualTexts.get(i).contains(expectedTexts[i])) {
+            if (!checkElement(i)) {
                 return null;
             }
         }
         return elements;
+    }
+
+    public boolean checkElement(int index) {
+        return actualTexts.get(index).contains(expectedTexts[index]);
     }
 
     @Override

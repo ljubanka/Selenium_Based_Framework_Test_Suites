@@ -13,10 +13,6 @@ public class SizeOf extends CollectionCondition {
 
     @Override
     public List<WebElement> check(List<WebElement> elements) {
-        return checkElements(elements);
-    }
-
-    public List<WebElement> checkElements(List<WebElement> elements) {
         listSize = elements.size();
         return listSize == expectedSize?elements:null;
     }

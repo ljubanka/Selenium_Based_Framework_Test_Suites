@@ -12,10 +12,6 @@ public class Text extends ElementCondition {
 
     @Override
     public WebElement check(WebElement element) {
-        return checkElement(element);
-    }
-
-    public WebElement checkElement(WebElement element) {
         actualText = element.getText();
         if (actualText.contains(expectedText)) {
             return element;

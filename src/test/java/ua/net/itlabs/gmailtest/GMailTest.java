@@ -1,6 +1,5 @@
 package ua.net.itlabs.gmailtest;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import ua.net.itlabs.core.Configuration;
