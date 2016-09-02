@@ -15,10 +15,10 @@ public class WaitFor {
     }
 
     public <V> V until(Condition<V> condition) {
-        return until(condition, Configuration.timeout*1000);
+        return until(condition, Configuration.timeout);
     }
 
-    public <V> V until(Condition<V> condition, int timeout) {
+    public <V> V until(Condition<V> condition, long timeoutMs) {
         Throwable lastError = null;
         final long startTime = System.currentTimeMillis();
 
@@ -34,9 +34,9 @@ public class WaitFor {
 
             sleep(Configuration.pollingInterval);
         }
-        while (System.currentTimeMillis() - startTime < timeout*1000);
+        while (System.currentTimeMillis() - startTime < timeoutMs);
 
-        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", timeout, condition.toString()), lastError);
+        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", Long.toString(timeoutMs/1000), condition.toString()), lastError);
     }
 
     public <V> V until(Condition<V>... conditions) {
@@ -50,7 +50,7 @@ public class WaitFor {
         return result;
     }
 
-    private void sleep(int milliseconds) {
+    private void sleep(long milliseconds) {
         try {
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
