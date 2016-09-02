@@ -1,4 +1,4 @@
-package ua.net.itlabs.core.elements;
+package ua.net.itlabs.core.wrappers.collection;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,10 +9,10 @@ import java.util.List;
 import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
 import static ua.net.itlabs.core.WaitFor.waitFor;
 
-public class LazyCollection implements LazyCollectionEntity {
+public class LazyWebDriverCollection extends AbstractLazyCollection {
     private By locator;
 
-    public LazyCollection(By locator) {
+    public LazyWebDriverCollection(By locator) {
         this.locator = locator;
     }
 
@@ -21,9 +21,9 @@ public class LazyCollection implements LazyCollectionEntity {
     }
 
     @Override
-    public List<WebElement> shouldHave(Condition<List<WebElement>> condition) {
-        List<WebElement> elements;
-        elements = waitFor(this).until(condition);
-        return elements;
+    public String toString() {
+        return locator.toString();
     }
+
+
 }

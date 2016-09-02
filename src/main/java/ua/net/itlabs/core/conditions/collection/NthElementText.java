@@ -16,10 +16,10 @@ public class NthElementText extends CollectionCondition {
     }
 
     @Override
-    public List<WebElement> check(List<WebElement> wrappedEntity) {
-        actualTexts = Helpers.getTexts(wrappedEntity);
+    public List<WebElement> check(List<WebElement> elements) {
+        actualTexts = Helpers.getTexts(elements);
         if (actualTexts.get(index).contains(expectedText)) {
-            return wrappedEntity;
+            return elements;
         }
         return null;
     }

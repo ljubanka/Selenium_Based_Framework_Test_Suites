@@ -9,10 +9,10 @@ public class ExactText extends Text {
     }
 
     @Override
-    public WebElement check(WebElement wrappedEntity) {
-        actualText = wrappedEntity.getText();
+    public WebElement check(WebElement element) {
+        actualText = element.getText();
         if (actualText.equals(expectedText)) {
-            return wrappedEntity;
+            return element;
         }
         return null;
     }

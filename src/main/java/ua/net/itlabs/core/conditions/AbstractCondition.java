@@ -1,16 +1,12 @@
 package ua.net.itlabs.core.conditions;
 
-import ua.net.itlabs.core.elements.LazyElement;
-import ua.net.itlabs.core.elements.LazyEntity;
+import ua.net.itlabs.core.wrappers.LazyEntity;
 
-public abstract class AbstractCondition<V> implements Condition<V>{
+public abstract class AbstractCondition<V> implements Condition<V>, DescribesResult{
 
     protected LazyEntity entity;
-    //public abstract V getWrappedEntity();
     public abstract V check(V wrappedEntity);
-    public abstract String identity();
-    public abstract String expected();
-    public abstract String actual();
+
 
     public V apply(LazyEntity entity) {
         this.entity = entity;
@@ -21,11 +17,11 @@ public abstract class AbstractCondition<V> implements Condition<V>{
         return null;
     }
 
-//    public String toString() {
-//        return String.format(getClass().getSimpleName() +
-//                "\nfor " + identity() + " found by " + locator +
-//                (expected() == "" ? "" : "\nexpected: " + expected()) +
-//                (actual() == "" ? "" : "\nactual: " + actual()));
-//    }
+    public String toString() {
+        return String.format(getClass().getSimpleName() +
+                "\nfor " + identity() + " found by " + entity +
+                (expected() == "" ? "" : "\nexpected: " + expected()) +
+                (actual() == "" ? "" : "\nactual: " + actual()));
+    }
 
 }

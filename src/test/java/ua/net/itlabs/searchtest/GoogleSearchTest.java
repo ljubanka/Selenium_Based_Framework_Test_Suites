@@ -2,15 +2,11 @@ package ua.net.itlabs.searchtest;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.elements.LazyElement;
 import ua.net.itlabs.testconfigs.BaseTest;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;
 import static ua.net.itlabs.core.ConciseAPI.byCSS;
 import static ua.net.itlabs.core.ConciseAPI.open;
-import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.ConciseAPI.*;
 import static ua.net.itlabs.core.conditions.CollectionConditions.*;
 

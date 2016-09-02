@@ -16,7 +16,7 @@ public class GMailTest extends BaseTest {
 
     @BeforeClass
     public static void config() {
-        Configuration.timeout = 16;
+        Configuration.timeout = 45;
     }
 
     @Test

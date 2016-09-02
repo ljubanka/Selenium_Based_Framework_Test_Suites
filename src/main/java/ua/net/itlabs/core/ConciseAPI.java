@@ -3,16 +3,9 @@ package ua.net.itlabs.core;
 import com.google.common.base.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ua.net.itlabs.core.conditions.Condition;
-import ua.net.itlabs.core.elements.LazyCollection;
-import ua.net.itlabs.core.elements.LazyElement;
-
-import java.util.List;
-
-import static ua.net.itlabs.core.WaitFor.waitFor;
-import static ua.net.itlabs.core.conditions.ElementConditions.visible;
+import ua.net.itlabs.core.wrappers.collection.LazyWebDriverCollection;
+import ua.net.itlabs.core.wrappers.element.LazyWebDriverElement;
 
 public class ConciseAPI {
     private static WebDriver driver;
@@ -29,16 +22,16 @@ public class ConciseAPI {
         getWebDriver().get(url);
     }
 
-    public static LazyElement $(By locator){
-        return new LazyElement(locator);//waitFor(locator).until(visible());
+    public static LazyWebDriverElement $(By locator){
+        return new LazyWebDriverElement(locator);//waitFor(locator).until(visible());
     }
 
-    public static LazyElement $(String cssSelector){
+    public static LazyWebDriverElement $(String cssSelector){
         return $(byCSS(cssSelector));
     }
 
-    public static LazyCollection $$(By elementsLocator) {//}, Condition<List<WebElement>> waitForCondition) {
-        return new LazyCollection(elementsLocator); //waitFor(elementsLocator).until(waitForCondition);
+    public static LazyWebDriverCollection $$(By elementsLocator) {//}, Condition<List<WebElement>> waitForCondition) {
+        return new LazyWebDriverCollection(elementsLocator); //waitFor(elementsLocator).until(waitForCondition);
     }
 
     public static By byText(String elementText) {
@@ -59,8 +52,8 @@ public class ConciseAPI {
         return assertThat(condition, Configuration.timeout);
     }
 
-    public static <V> V assertThat(Function<? super WebDriver, V> condition, int timeout) {
-        return (new WebDriverWait(getWebDriver(), timeout)).until(condition);
+    public static <V> V assertThat(Function<? super WebDriver, V> condition, long timeoutMs) {
+        return (new WebDriverWait(getWebDriver(), timeoutMs/1000)).until(condition);
     }
 
 

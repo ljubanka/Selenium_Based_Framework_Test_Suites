@@ -1,6 +1,8 @@
 package ua.net.itlabs.core;
 
 public class Configuration {
-    public static int timeout = 4;//seconds
-    public static int pollingInterval = 100;//miliseconds
+    //default interval for WaitFor.until - smart waiting check one condition, in milliseconds
+    public static long timeout = 4000;
+    //interval between checks inside WaitFor.until, in milliseconds
+    public static long pollingInterval = 100;
 }

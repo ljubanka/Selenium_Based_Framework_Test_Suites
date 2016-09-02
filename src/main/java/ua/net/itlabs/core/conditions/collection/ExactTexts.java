@@ -8,7 +8,6 @@ import java.util.List;
 public class ExactTexts extends Texts {
     public ExactTexts(String... expectedTexts) {
         super(expectedTexts);
-        //this.expectedTexts = expectedTexts;
     }
 
     @Override
