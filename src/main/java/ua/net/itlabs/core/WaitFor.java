@@ -36,7 +36,7 @@ public class WaitFor {
         }
         while (System.currentTimeMillis() - startTime < timeoutMs);
 
-        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", Long.toString(timeoutMs/1000), condition.toString()), lastError);
+        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", timeoutMs, condition.toString()), lastError);
     }
 
     public <V> V until(Condition<V>... conditions) {

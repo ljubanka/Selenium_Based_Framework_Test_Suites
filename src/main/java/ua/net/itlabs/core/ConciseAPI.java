@@ -58,7 +58,7 @@ public class ConciseAPI {
     }
 
     public static <V> V assertThat(Function<? super WebDriver, V> condition, long timeout) {
-        return (new WebDriverWait(getWebDriver(), timeout)).until(condition);
+        return (new WebDriverWait(getWebDriver(), timeout/1000)).until(condition);
     }
 
 
