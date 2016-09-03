@@ -7,6 +7,7 @@ import ua.net.itlabs.core.conditions.CollectionConditions;
 import ua.net.itlabs.core.conditions.Condition;
 import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.core.wrappers.LazyElement;
+import ua.net.itlabs.core.wrappers.element.LazyNthElement;
 import ua.net.itlabs.core.wrappers.element.LazyWrappedWebElement;
 
 import java.util.ArrayList;
@@ -81,10 +82,11 @@ public abstract class AbstractLazyCollection implements LazyCollection{
 
     @Override
     public LazyElement get(int index) {
-        List<WebElement> elements = waitFor(this).until(minimumSizeOf(index+1));
-        WebElement element = elements.get(index);
-        //waitFor(this).until(minimumSizeOf(index+1)).get(index);
-        return new LazyWrappedWebElement(element);
+        return new LazyNthElement(this, index);
+//        List<WebElement> elements = waitFor(this).until(minimumSizeOf(index+1));
+//        WebElement element = elements.get(index);
+//        //waitFor(this).until(minimumSizeOf(index+1)).get(index);
+//        return new LazyWrappedWebElement(element);
 
     }
 }
