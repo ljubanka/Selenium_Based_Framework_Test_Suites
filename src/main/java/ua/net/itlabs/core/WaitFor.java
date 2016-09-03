@@ -15,7 +15,7 @@ public class WaitFor {
     }
 
     public <V> V until(Condition<V> condition) {
-        return until(condition, Configuration.timeout);
+        return until(condition, Configuration.timeoutMs);
     }
 
     public <V> V until(Condition<V> condition, long timeoutMs) {
