@@ -7,19 +7,19 @@ import ua.net.itlabs.core.conditions.element.Text;
 import ua.net.itlabs.core.conditions.element.Visible;
 
 public class ElementConditions {
-    public static Condition<WebElement> text(String expectedText) {
+    public static ElementCondition text(String expectedText) {
         return new Text(expectedText);
     }
 
-    public static Condition<WebElement> exactText(String expectedText) {
+    public static ElementCondition exactText(String expectedText) {
         return new ExactText(expectedText);
     }
 
-    public static Condition<WebElement> present() {
+    public static ElementCondition present() {
         return new Present();
     }
 
-    public static Condition<WebElement> visible() {
+    public static ElementCondition visible() {
         return new Visible();
     }
 

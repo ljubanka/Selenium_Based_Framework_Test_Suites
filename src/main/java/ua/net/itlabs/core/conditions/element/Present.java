@@ -2,7 +2,7 @@ package ua.net.itlabs.core.conditions.element;
 
 import org.openqa.selenium.WebElement;
 
-public class Present extends ElementCondition {
+public class Present extends AbstractElementCondition {
 
     private boolean isPresent;
 

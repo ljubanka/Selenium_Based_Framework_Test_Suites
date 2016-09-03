@@ -42,7 +42,7 @@ public class GoogleSearchTest extends BaseTest {
     }
 
     public void search(String queryText) {
-        $(By.name("q")).setValue(queryText);
+        $(By.name("q")).setValue(queryText).pressEnter();
     }
 
 }

@@ -2,6 +2,7 @@ package ua.net.itlabs.gmailtest.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import ua.net.itlabs.core.wrappers.LazyCollection;
 
 import static ua.net.itlabs.core.ConciseAPI.*;
 import static ua.net.itlabs.core.WaitFor.waitFor;
@@ -18,18 +19,16 @@ public class Mails {
     }
 
     public  static void assertMail(int index, String text) {
-        $$(emails).shouldHave(nthElementText(index, text));
-        //waitFor(emails).until(listNthElementHasText(index, text));
+        emails.shouldHave(nthElementText(index, text));
     }
 
     public static void assertMails(String... emailTexts) {
-        $$(emails).shouldHave(texts(emailTexts));
-        //waitFor(emails).until(texts(emailTexts));
+        emails.shouldHave(texts(emailTexts));
     }
 
     public static void searchBySubject(String text) {
-        $(By.name("q")).setValue("subject: " + text);
+        $(By.name("q")).setValue("subject: " + text).pressEnter();
     }
 
-    public static By emails = byCSS("[role='main'] .zA");
+    public static LazyCollection emails = $$(byCSS("[role='main'] .zA"));
 }

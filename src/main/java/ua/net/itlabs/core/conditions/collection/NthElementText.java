@@ -2,10 +2,11 @@ package ua.net.itlabs.core.conditions.collection;
 
 import org.openqa.selenium.WebElement;
 import ua.net.itlabs.core.Helpers;
+import ua.net.itlabs.core.conditions.CollectionCondition;
 
 import java.util.List;
 
-public class NthElementText extends CollectionCondition {
+public class NthElementText extends AbstractCollectionCondition {
     private List<String> actualTexts;
     private String expectedText;
     private int index;
@@ -33,4 +34,5 @@ public class NthElementText extends CollectionCondition {
     public String actual() {
         return actualTexts.toString();
     }
+
 }

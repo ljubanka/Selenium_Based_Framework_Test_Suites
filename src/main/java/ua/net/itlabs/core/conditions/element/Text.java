@@ -2,7 +2,7 @@ package ua.net.itlabs.core.conditions.element;
 
 import org.openqa.selenium.WebElement;
 
-public class Text extends ElementCondition {
+public class Text extends AbstractElementCondition {
     protected String actualText;
     protected String expectedText;
 

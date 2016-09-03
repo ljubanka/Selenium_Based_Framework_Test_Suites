@@ -2,7 +2,6 @@ package ua.net.itlabs.core;
 
 import org.openqa.selenium.*;
 import ua.net.itlabs.core.conditions.Condition;
-import ua.net.itlabs.core.wrappers.element.LazyWebDriverElement;
 import ua.net.itlabs.core.wrappers.LazyEntity;
 
 public class WaitFor {
@@ -17,7 +16,7 @@ public class WaitFor {
     }
 
     public <V> V until(Condition<V> condition) {
-        return until(condition, Configuration.timeout);
+        return until(condition, Configuration.timeoutMs);
     }
 
     public <V> V until(Condition<V> condition, long timeoutMs) {
@@ -38,7 +37,7 @@ public class WaitFor {
         }
         while (System.currentTimeMillis() - startTime < timeoutMs);
 
-        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", timeoutMs, condition.toString()), lastError);
+        throw new TimeoutException(String.format("Timed out after %s seconds waiting for %s", Long.toString(timeoutMs/1000), condition.toString()), lastError);
     }
 
     public <V> V until(Condition<V>... conditions) {

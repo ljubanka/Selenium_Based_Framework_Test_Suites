@@ -6,7 +6,7 @@ import ua.net.itlabs.core.Helpers;
 
 import java.util.List;
 
-public class Texts extends CollectionCondition {
+public class Texts extends AbstractCollectionCondition {
     protected List<String> actualTexts;
     protected String[] expectedTexts;
 

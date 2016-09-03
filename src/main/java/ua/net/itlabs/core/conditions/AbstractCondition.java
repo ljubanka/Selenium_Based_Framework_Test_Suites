@@ -2,15 +2,15 @@ package ua.net.itlabs.core.conditions;
 
 import ua.net.itlabs.core.wrappers.LazyEntity;
 
-public abstract class AbstractCondition<V> implements Condition<V>, DescribesResult{
+public abstract class AbstractCondition<T> implements Condition<T>, DescribesResult{
 
     protected LazyEntity entity;
-    public abstract V check(V wrappedEntity);
+    public abstract T check(T wrappedEntity);
 
 
-    public V apply(LazyEntity entity) {
+    public T apply(LazyEntity entity) {
         this.entity = entity;
-        V result = check((V) entity.getWrappedEntity());
+        T result = check((T) entity.getWrappedEntity());
         if (result != null) {
             return result;
         }

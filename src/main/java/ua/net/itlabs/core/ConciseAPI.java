@@ -4,6 +4,8 @@ import com.google.common.base.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ua.net.itlabs.core.wrappers.LazyCollection;
+import ua.net.itlabs.core.wrappers.LazyElement;
 import ua.net.itlabs.core.wrappers.collection.LazyWebDriverCollection;
 import ua.net.itlabs.core.wrappers.element.LazyWebDriverElement;
 
@@ -22,15 +24,15 @@ public class ConciseAPI {
         getWebDriver().get(url);
     }
 
-    public static LazyWebDriverElement $(By locator){
+    public static LazyElement $(By locator){
         return new LazyWebDriverElement(locator);//waitFor(locator).until(visible());
     }
 
-    public static LazyWebDriverElement $(String cssSelector){
+    public static LazyElement $(String cssSelector){
         return $(byCSS(cssSelector));
     }
 
-    public static LazyWebDriverCollection $$(By elementsLocator) {//}, Condition<List<WebElement>> waitForCondition) {
+    public static LazyCollection $$(By elementsLocator) {//}, Condition<List<WebElement>> waitForCondition) {
         return new LazyWebDriverCollection(elementsLocator); //waitFor(elementsLocator).until(waitForCondition);
     }
 
@@ -49,7 +51,7 @@ public class ConciseAPI {
 //        super(".//*/text()[normalize-space(.) = " + Quotes.escape(elementText) + "]/parent::*");
 
     public static <V> V assertThat(Function<? super WebDriver, V> condition) {
-        return assertThat(condition, Configuration.timeout);
+        return assertThat(condition, Configuration.timeoutMs);
     }
 
     public static <V> V assertThat(Function<? super WebDriver, V> condition, long timeoutMs) {

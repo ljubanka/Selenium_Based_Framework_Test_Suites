@@ -2,7 +2,7 @@ package ua.net.itlabs.core.conditions.element;
 
 import org.openqa.selenium.WebElement;
 
-public class Visible extends ElementCondition {
+public class Visible extends AbstractElementCondition {
     private boolean isVisible;
 
     @Override

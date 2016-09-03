@@ -1,11 +1,15 @@
 package ua.net.itlabs.core.wrappers.element;
 
+import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import ua.net.itlabs.core.conditions.Condition;
+import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyElement;
 
 import java.util.List;
 
+import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
 import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.conditions.ElementConditions.present;
 import static ua.net.itlabs.core.conditions.ElementConditions.visible;
@@ -13,8 +17,20 @@ import static ua.net.itlabs.core.conditions.ElementConditions.visible;
 public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
-    public LazyElement shouldBe(Condition<WebElement> condition) {
-        waitFor(this).until(condition);
+    public LazyElement should(ElementCondition... conditions) {
+        waitFor(this).until(conditions);
+        return this;
+    }
+
+    @Override
+    public LazyElement shouldBe(ElementCondition... conditions) {
+        waitFor(this).until(conditions);
+        return this;
+    }
+
+    @Override
+    public LazyElement shouldHave(ElementCondition... conditions) {
+        waitFor(this).until(conditions);
         return this;
     }
 
@@ -38,19 +54,25 @@ public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
     public LazyElement doubleClick() {
-        return null;
+        WebElement element = waitFor(this).until(visible());
+        Actions actions = new Actions(getWebDriver());
+        actions.doubleClick(element).perform();
+        return this;
     }
 
     @Override
     public LazyElement hover() {
-        return null;
+        WebElement element = waitFor(this).until(visible());
+        Actions actions = new Actions(getWebDriver());
+        actions.moveToElement(element).perform();
+        return this;
     }
 
     @Override
     public LazyElement setValue(String text) {
         WebElement element = waitFor(this).until(visible());
         element.clear();
-        element.sendKeys(text + Keys.ENTER);
+        element.sendKeys(text);
         return this;
     }
 
@@ -109,19 +131,19 @@ public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
     public Point getLocation() {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(visible());
         return element.getLocation();
     }
 
     @Override
     public Dimension getSize() {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(visible());
         return element.getSize();
     }
 
     @Override
     public Rectangle getRect() {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(visible());
         return element.getRect();
     }
 
@@ -134,14 +156,18 @@ public abstract class AbstractLazyElement implements LazyElement{
     @Override
     public void sendKeys(CharSequence... var1) {
         WebElement element = waitFor(this).until(visible());
-        element.clear();
         element.sendKeys(var1);
     }
 
     @Override
     public LazyElement pressEnter() {
-        WebElement element = waitFor(this).until(visible());
-        element.sendKeys(Keys.ENTER);
+        this.sendKeys(Keys.ENTER);
+        return this;
+    }
+
+    @Override
+    public LazyElement pressEscape() {
+        this.sendKeys(Keys.ESCAPE);
         return this;
     }
 }
