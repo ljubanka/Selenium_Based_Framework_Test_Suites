@@ -9,6 +9,7 @@ import static ua.net.itlabs.core.ConciseAPI.byCSS;
 import static ua.net.itlabs.core.ConciseAPI.open;
 import static ua.net.itlabs.core.ConciseAPI.*;
 import static ua.net.itlabs.core.conditions.CollectionConditions.*;
+import static ua.net.itlabs.core.conditions.ElementConditions.text;
 
 public class GoogleSearchTest extends BaseTest {
 
@@ -18,7 +19,7 @@ public class GoogleSearchTest extends BaseTest {
 
         search("Selenium automates browsers");
         $$(byCSS(searchResults)).shouldHave(sizeOf(10));
-        $$(byCSS(searchResults)).shouldHave(nthElementText(0, "Selenium automates browsers"));
+        $$(byCSS(searchResults)).get(0).shouldHave(text("Selenium automates browsers"));
 
         followNthLink(0);
         assertThat(urlContains("http://www.seleniumhq.org/"));
@@ -38,7 +39,7 @@ public class GoogleSearchTest extends BaseTest {
 
     public void followNthLink(int index) {
         $$(byCSS(searchResults)).shouldHave(minimumSizeOf(index+1));
-        $$(byCSS(searchResults)).shouldHave(minimumSizeOf(index+1)).get(index).findElement(byCSS(".r>a")).click();
+        $$(byCSS(searchResults)).get(index).findElement(byCSS(".r>a")).click();
     }
 
     public void search(String queryText) {

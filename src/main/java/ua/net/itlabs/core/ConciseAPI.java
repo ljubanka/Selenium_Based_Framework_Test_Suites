@@ -3,6 +3,7 @@ package ua.net.itlabs.core;
 import com.google.common.base.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.core.wrappers.LazyElement;
@@ -22,6 +23,10 @@ public class ConciseAPI {
 
     public static void open(String url) {
         getWebDriver().get(url);
+    }
+
+    public static Actions actions() {
+        return new Actions(getWebDriver());
     }
 
     public static LazyElement $(By locator){

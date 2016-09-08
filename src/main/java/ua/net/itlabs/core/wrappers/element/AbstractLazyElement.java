@@ -9,6 +9,7 @@ import ua.net.itlabs.core.wrappers.LazyElement;
 
 import java.util.List;
 
+import static ua.net.itlabs.core.ConciseAPI.actions;
 import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
 import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.conditions.ElementConditions.present;
@@ -24,13 +25,13 @@ public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
     public LazyElement shouldBe(ElementCondition... conditions) {
-        waitFor(this).until(conditions);
+        should(conditions);
         return this;
     }
 
     @Override
     public LazyElement shouldHave(ElementCondition... conditions) {
-        waitFor(this).until(conditions);
+        should(conditions);
         return this;
     }
 
@@ -48,23 +49,21 @@ public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
     public void submit() {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(visible());
         element.submit();
     }
 
     @Override
     public LazyElement doubleClick() {
         WebElement element = waitFor(this).until(visible());
-        Actions actions = new Actions(getWebDriver());
-        actions.doubleClick(element).perform();
+        actions().doubleClick(element).perform();
         return this;
     }
 
     @Override
     public LazyElement hover() {
         WebElement element = waitFor(this).until(visible());
-        Actions actions = new Actions(getWebDriver());
-        actions.moveToElement(element).perform();
+        actions().moveToElement(element).perform();
         return this;
     }
 
@@ -148,26 +147,26 @@ public abstract class AbstractLazyElement implements LazyElement{
     }
 
     @Override
-    public String getCssValue(String s) {
+    public String getCssValue(String cssProperty) {
         WebElement element = waitFor(this).until(present());
-        return element.getCssValue(s);
+        return element.getCssValue(cssProperty);
     }
 
     @Override
-    public void sendKeys(CharSequence... var1) {
+    public void sendKeys(CharSequence... chars) {
         WebElement element = waitFor(this).until(visible());
-        element.sendKeys(var1);
+        element.sendKeys(chars);
     }
 
     @Override
     public LazyElement pressEnter() {
-        this.sendKeys(Keys.ENTER);
+        sendKeys(Keys.ENTER);
         return this;
     }
 
     @Override
     public LazyElement pressEscape() {
-        this.sendKeys(Keys.ESCAPE);
+        sendKeys(Keys.ESCAPE);
         return this;
     }
 }

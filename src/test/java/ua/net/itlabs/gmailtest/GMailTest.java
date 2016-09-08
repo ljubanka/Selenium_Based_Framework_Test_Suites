@@ -45,15 +45,4 @@ public class GMailTest extends BaseTest {
         Mails.assertMails(subject);
     }
 
-    @Test
-    public void testIterator() {
-        Gmail.vizit();
-
-        Gmail.logIn(email, password);
-
-        for (LazyElement element:emails) {
-            System.out.println(element.getText());
-        }
-    }
-
 }

@@ -23,8 +23,4 @@ public class CollectionConditions {
         return new ExactTexts(expectedTexts);
     }
 
-    public static CollectionCondition nthElementText(int index, String expectedText) {
-        return new NthElementText(index, expectedText);
-    }
-
 }

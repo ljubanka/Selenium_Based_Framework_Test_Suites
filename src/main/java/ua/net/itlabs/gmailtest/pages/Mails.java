@@ -1,13 +1,11 @@
 package ua.net.itlabs.gmailtest.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import ua.net.itlabs.core.wrappers.LazyCollection;
 
 import static ua.net.itlabs.core.ConciseAPI.*;
-import static ua.net.itlabs.core.WaitFor.waitFor;
-import static ua.net.itlabs.core.conditions.CollectionConditions.nthElementText;
 import static ua.net.itlabs.core.conditions.CollectionConditions.texts;
+import static ua.net.itlabs.core.conditions.ElementConditions.text;
 
 public class Mails {
 
@@ -19,7 +17,7 @@ public class Mails {
     }
 
     public  static void assertMail(int index, String text) {
-        emails.shouldHave(nthElementText(index, text));
+        emails.get(index).shouldHave(text(text));
     }
 
     public static void assertMails(String... emailTexts) {

@@ -11,10 +11,7 @@ public class ExactText extends Text {
     @Override
     public WebElement check(WebElement element) {
         actualText = element.getText();
-        if (actualText.equals(expectedText)) {
-            return element;
-        }
-        return null;
+        return actualText.equals(expectedText)?element:null;
     }
 
 }

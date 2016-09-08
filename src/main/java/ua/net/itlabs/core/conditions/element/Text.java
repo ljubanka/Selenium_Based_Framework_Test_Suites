@@ -13,10 +13,7 @@ public class Text extends AbstractElementCondition {
     @Override
     public WebElement check(WebElement element) {
         actualText = element.getText();
-        if (actualText.contains(expectedText)) {
-            return element;
-        }
-        return null;
+        return actualText.contains(expectedText)?element:null;
     }
 
     @Override
