@@ -1,21 +1,33 @@
 package ua.net.itlabs.core.wrappers.element;
 
-import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import ua.net.itlabs.core.conditions.Condition;
 import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyElement;
 
 import java.util.List;
 
 import static ua.net.itlabs.core.ConciseAPI.actions;
-import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
+import static ua.net.itlabs.core.ConciseAPI.byCSS;
 import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.conditions.ElementConditions.present;
 import static ua.net.itlabs.core.conditions.ElementConditions.visible;
 
 public abstract class AbstractLazyElement implements LazyElement{
+
+    @Override
+    public LazyElement find(By locator) {
+        return new LazyElementInsideElement(this, locator);
+    }
+
+    @Override
+    public LazyElement $(By locator) {
+        return find(locator);
+    }
+
+    @Override
+    public LazyElement $(String cssSelector) {
+        return find(byCSS(cssSelector));
+    }
 
     @Override
     public LazyElement should(ElementCondition... conditions) {

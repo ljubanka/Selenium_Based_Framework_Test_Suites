@@ -38,8 +38,9 @@ public class GoogleSearchTest extends BaseTest {
     public String searchResults = ".srg>.g";
 
     public void followNthLink(int index) {
-        $$(byCSS(searchResults)).shouldHave(minimumSizeOf(index+1));
-        $$(byCSS(searchResults)).get(index).findElement(byCSS(".r>a")).click();
+        //$$(byCSS(searchResults)).shouldHave(minimumSizeOf(index+1));
+        //$$(byCSS(searchResults)).get(index).findElement(byCSS(".r>a")).click();
+        $$(byCSS(searchResults)).get(index).find(byCSS(".r>a")).click();
     }
 
     public void search(String queryText) {
