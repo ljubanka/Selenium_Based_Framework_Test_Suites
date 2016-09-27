@@ -10,6 +10,7 @@ import static ua.net.itlabs.core.ConciseAPI.open;
 import static ua.net.itlabs.core.ConciseAPI.*;
 import static ua.net.itlabs.core.conditions.CollectionConditions.*;
 import static ua.net.itlabs.core.conditions.ElementConditions.text;
+import static ua.net.itlabs.core.conditions.ElementConditions.visible;
 
 public class GoogleSearchTest extends BaseTest {
 
@@ -18,8 +19,11 @@ public class GoogleSearchTest extends BaseTest {
         open("http://google.com/ncr");
 
         search("Selenium automates browsers");
-        $$(byCSS(searchResults)).shouldHave(sizeOf(10));
-        $$(byCSS(searchResults)).get(0).shouldHave(text("Selenium automates browsers"));
+        $$(byCSS(searchResults)).shouldHave(sizeOf(9));
+
+        $(byCSS(topSearchResult)).shouldBe(visible());
+        $(byCSS(topSearchResult)).shouldHave(text("Selenium automates browsers"));
+        //$$(byCSS(topSearchResult)).get(0).shouldHave(text("Selenium automates browsers"));
 
         followNthLink(0);
         assertThat(urlContains("http://www.seleniumhq.org/"));
@@ -36,10 +40,21 @@ public class GoogleSearchTest extends BaseTest {
     }
 
     public String searchResults = ".srg>.g";
+    public String topSearchResult = "#rso>.g:first-child";
 
     public void followNthLink(int index) {
-        $$(byCSS(searchResults)).shouldHave(minimumSizeOf(index+1));
-        $$(byCSS(searchResults)).get(index).findElement(byCSS(".r>a")).click();
+        if (index==1) {
+            followFirstLink();
+        }
+        else {
+            $$(byCSS(searchResults)).shouldHave(minimumSizeOf(index + 1));
+            $$(byCSS(searchResults)).get(index).findElement(byCSS(".r>a")).click();
+        }
+    }
+
+    public void followFirstLink() {
+        $(byCSS(topSearchResult)).shouldBe(visible());
+        $(byCSS(topSearchResult)).findElement(byCSS(".r>a")).click();
     }
 
     public void search(String queryText) {
