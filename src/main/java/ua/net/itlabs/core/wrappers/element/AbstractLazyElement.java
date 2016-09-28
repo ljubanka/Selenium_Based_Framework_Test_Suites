@@ -18,6 +18,11 @@ import static ua.net.itlabs.core.conditions.ElementConditions.visible;
 public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
+    public LazyElement find(By locator) {
+        return new LazyElementInnerElement(this, locator);
+    }
+
+    @Override
     public LazyElement should(ElementCondition... conditions) {
         waitFor(this).until(conditions);
         return this;

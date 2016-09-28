@@ -31,7 +31,7 @@ public abstract class AbstractElementCondition extends AbstractCondition<WebElem
 
     @Override
     public String identity() {
-        return "WebElement";
+        return "element";
     }
 
 }
