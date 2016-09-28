@@ -15,8 +15,11 @@ public interface LazyElement extends LazyEntity<WebElement>, WebElement {
     LazyElement setValue(String text);
     LazyElement pressEnter();
     LazyElement pressEscape();
+    LazyElement pressTab();
     LazyElement find(By locator);
+    LazyElement find(String cssSelector);
     LazyElement $(By locator);
     LazyElement $(String cssSelector);
+    boolean is(ElementCondition condition);
 
 }

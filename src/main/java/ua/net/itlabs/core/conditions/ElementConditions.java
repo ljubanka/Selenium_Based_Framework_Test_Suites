@@ -7,6 +7,9 @@ import ua.net.itlabs.core.conditions.element.Text;
 import ua.net.itlabs.core.conditions.element.Visible;
 
 public class ElementConditions {
+    public static final ElementCondition visible = new Visible();
+    public static final ElementCondition present = new Present();
+
     public static ElementCondition text(String expectedText) {
         return new Text(expectedText);
     }
@@ -15,12 +18,12 @@ public class ElementConditions {
         return new ExactText(expectedText);
     }
 
-    public static ElementCondition present() {
-        return new Present();
-    }
-
-    public static ElementCondition visible() {
-        return new Visible();
-    }
+//    public static ElementCondition present() {
+//        return new Present();
+//    }
+//
+//    public static ElementCondition visible() {
+//        return new Visible();
+//    }
 
 }

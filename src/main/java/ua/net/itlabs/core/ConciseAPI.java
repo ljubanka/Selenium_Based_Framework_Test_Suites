@@ -2,6 +2,7 @@ package ua.net.itlabs.core;
 
 import com.google.common.base.Function;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,20 +26,28 @@ public class ConciseAPI {
         getWebDriver().get(url);
     }
 
+    public static void refresh() {
+        getWebDriver().navigate().refresh();
+    }
+
     public static Actions actions() {
         return new Actions(getWebDriver());
     }
 
     public static LazyElement $(By locator){
-        return new LazyWebDriverElement(locator);//waitFor(locator).until(visible());
+        return new LazyWebDriverElement(locator);
     }
 
     public static LazyElement $(String cssSelector){
         return $(byCSS(cssSelector));
     }
 
-    public static LazyCollection $$(By elementsLocator) {//}, Condition<List<WebElement>> waitForCondition) {
-        return new LazyWebDriverCollection(elementsLocator); //waitFor(elementsLocator).until(waitForCondition);
+    public static LazyCollection $$(By elementsLocator) {
+        return new LazyWebDriverCollection(elementsLocator);
+    }
+
+    public static LazyCollection $$(String cssSelector) {
+        return $$(byCSS(cssSelector));
     }
 
     public static By byText(String elementText) {
@@ -54,6 +63,10 @@ public class ConciseAPI {
     }
 
 //        super(".//*/text()[normalize-space(.) = " + Quotes.escape(elementText) + "]/parent::*");
+
+    public static void executeJavascript(String JSstring) {
+        ((JavascriptExecutor)getWebDriver()).executeScript(JSstring);
+    }
 
     public static <V> V assertThat(Function<? super WebDriver, V> condition) {
         return assertThat(condition, Configuration.timeoutMs);

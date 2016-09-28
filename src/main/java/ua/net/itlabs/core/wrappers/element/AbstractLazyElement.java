@@ -15,8 +15,25 @@ import static ua.net.itlabs.core.conditions.ElementConditions.visible;
 public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
+    public boolean is(ElementCondition condition) {
+        try {
+            if (condition.apply(this) != null) {
+                return true;
+            }
+
+        }
+        catch (WebDriverException | IndexOutOfBoundsException e) {}
+        return false;
+    }
+
+    @Override
     public LazyElement find(By locator) {
-        return new LazyElementInsideElement(this, locator);
+        return new LazyElementInnerElement(this, locator);
+    }
+
+    @Override
+    public LazyElement find(String cssSelector) {
+        return find(byCSS(cssSelector));
     }
 
     @Override
@@ -26,7 +43,7 @@ public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
     public LazyElement $(String cssSelector) {
-        return find(byCSS(cssSelector));
+        return find(cssSelector);
     }
 
     @Override
@@ -49,39 +66,39 @@ public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         return element.getScreenshotAs(outputType);
     }
 
     @Override
     public void click() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         element.click();
     }
 
     @Override
     public void submit() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         element.submit();
     }
 
     @Override
     public LazyElement doubleClick() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         actions().doubleClick(element).perform();
         return this;
     }
 
     @Override
     public LazyElement hover() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         actions().moveToElement(element).perform();
         return this;
     }
 
     @Override
     public LazyElement setValue(String text) {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         element.clear();
         element.sendKeys(text);
         return this;
@@ -89,84 +106,84 @@ public abstract class AbstractLazyElement implements LazyElement{
 
     @Override
     public void clear() {
-        waitFor(this).until(visible()).clear();
+        waitFor(this).until(visible).clear();
     }
 
     @Override
     public String getTagName() {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(present);
         return element.getTagName();
     }
 
     @Override
     public String getAttribute(String s) {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(present);
         return element.getAttribute(s);
     }
 
     @Override
     public boolean isSelected() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         return element.isSelected();
     }
 
     @Override
     public boolean isEnabled() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         return element.isEnabled();
     }
 
     @Override
     public String getText() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         return element.getText();
     }
 
     @Override
     public List<WebElement> findElements(By by) {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(present);
         return element.findElements(by);
     }
 
     @Override
     public WebElement findElement(By by) {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(present);
         return element.findElement(by);
     }
 
     @Override
     public boolean isDisplayed() {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(present);
         return element.isDisplayed();
     }
 
     @Override
     public Point getLocation() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         return element.getLocation();
     }
 
     @Override
     public Dimension getSize() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         return element.getSize();
     }
 
     @Override
     public Rectangle getRect() {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         return element.getRect();
     }
 
     @Override
     public String getCssValue(String cssProperty) {
-        WebElement element = waitFor(this).until(present());
+        WebElement element = waitFor(this).until(present);
         return element.getCssValue(cssProperty);
     }
 
     @Override
     public void sendKeys(CharSequence... chars) {
-        WebElement element = waitFor(this).until(visible());
+        WebElement element = waitFor(this).until(visible);
         element.sendKeys(chars);
     }
 
@@ -179,6 +196,12 @@ public abstract class AbstractLazyElement implements LazyElement{
     @Override
     public LazyElement pressEscape() {
         sendKeys(Keys.ESCAPE);
+        return this;
+    }
+
+    @Override
+    public LazyElement pressTab() {
+        sendKeys(Keys.TAB);
         return this;
     }
 }

@@ -28,5 +28,5 @@ public class Mails {
         $(By.name("q")).setValue("subject: " + text).pressEnter();
     }
 
-    public static LazyCollection emails = $$(byCSS("[role='main'] .zA"));
+    public static LazyCollection emails = $$("[role='main'] .zA");
 }

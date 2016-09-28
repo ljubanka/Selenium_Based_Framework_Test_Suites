@@ -1,6 +1,7 @@
 package ua.net.itlabs.core.wrappers.element;
 
 import org.openqa.selenium.WebElement;
+import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyElement;
 import ua.net.itlabs.core.wrappers.LazyEntity;
 

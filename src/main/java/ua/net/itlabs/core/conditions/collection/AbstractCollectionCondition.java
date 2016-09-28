@@ -34,7 +34,7 @@ public abstract class AbstractCollectionCondition extends AbstractCondition<List
 
     @Override
     public String identity() {
-        return "WebElements";
+        return "collection";
     }
 
 

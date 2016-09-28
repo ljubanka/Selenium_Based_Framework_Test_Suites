@@ -2,8 +2,10 @@ package ua.net.itlabs.core.wrappers.collection;
 
 import org.openqa.selenium.WebElement;
 import ua.net.itlabs.core.conditions.CollectionCondition;
+import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.core.wrappers.LazyElement;
+import ua.net.itlabs.core.wrappers.element.LazyFoundByConditionElement;
 import ua.net.itlabs.core.wrappers.element.LazyCollectionNthElement;
 import ua.net.itlabs.core.wrappers.element.LazyWrappedWebElement;
 
@@ -12,6 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import static ua.net.itlabs.core.WaitFor.waitFor;
+import static ua.net.itlabs.core.conditions.CollectionConditions.sizeOf;
 
 public abstract class AbstractLazyCollection implements LazyCollection{
 
@@ -22,6 +25,11 @@ public abstract class AbstractLazyCollection implements LazyCollection{
             list.add(new LazyWrappedWebElement(this, element));
         }
         return list.iterator();
+    }
+
+    @Override
+    public LazyCollection filter(ElementCondition... conditions) {
+        return null;
     }
 
     @Override
@@ -39,6 +47,12 @@ public abstract class AbstractLazyCollection implements LazyCollection{
     @Override
     public LazyCollection shouldHave(CollectionCondition... conditions) {
         should(conditions);
+        return this;
+    }
+
+    @Override
+    public LazyCollection shouldHaveSize(int expectedSize) {
+        shouldHave(sizeOf(expectedSize));
         return this;
     }
 
@@ -66,4 +80,11 @@ public abstract class AbstractLazyCollection implements LazyCollection{
     public LazyElement get(int index) {
         return new LazyCollectionNthElement(this, index);
     }
+
+    @Override
+    public LazyElement find(ElementCondition condition) {
+        return new LazyFoundByConditionElement(this, condition);
+    }
+
+
 }
