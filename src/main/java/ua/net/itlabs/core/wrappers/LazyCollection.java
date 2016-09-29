@@ -13,7 +13,7 @@ public interface LazyCollection extends LazyEntity<List<WebElement>>, Iterable<L
     LazyCollection shouldBe(CollectionCondition... conditions);
     LazyCollection shouldHaveSize(int expectedSize);
     LazyElement get(int index);
-    LazyCollection filter(ElementCondition... conditions);
+    LazyCollection filter(ElementCondition condition);
     LazyElement find(ElementCondition condition);
     int size();
     boolean isEmpty();

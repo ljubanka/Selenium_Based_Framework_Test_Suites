@@ -97,13 +97,13 @@ public class TodoMVCPage {
 
     public void add(String... taskTexts) {
         for (String text: taskTexts) {
-            $("#new-todo").setValue(text).pressEnter();//no check for element to be clickable now!!!
-            //$(elementToBeClickable(byCSS("#new-todo"))).sendKeys(text + Keys.ENTER);
+            $("#new-todo").shouldBe(enabled).setValue(text).pressEnter();
         }
     }
 
     public LazyElement startEdit(String oldTask, String newTask) {
         tasks.find(exactText(oldTask)).find("label").doubleClick();
+        //return tasks.find(exactText(oldTask)).find("label").doubleClick().find(".editing").find(".edit").setValue(newTask);
         return tasks.find(exactText(oldTask)).find("editing").find(".edit").setValue(newTask);
     }
 

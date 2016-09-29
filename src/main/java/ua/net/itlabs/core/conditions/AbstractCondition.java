@@ -1,5 +1,6 @@
 package ua.net.itlabs.core.conditions;
 
+import ua.net.itlabs.core.exceptions.WebDriverAssertionException;
 import ua.net.itlabs.core.wrappers.LazyEntity;
 
 public abstract class AbstractCondition<T> implements Condition<T>, DescribesResult{
@@ -14,7 +15,8 @@ public abstract class AbstractCondition<T> implements Condition<T>, DescribesRes
         if (result != null) {
             return result;
         }
-        return null;
+        throw new WebDriverAssertionException();
+        //return null;
     }
 
     public String toString() {

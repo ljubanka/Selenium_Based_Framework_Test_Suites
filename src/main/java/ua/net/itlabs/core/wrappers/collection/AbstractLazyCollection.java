@@ -5,7 +5,7 @@ import ua.net.itlabs.core.conditions.CollectionCondition;
 import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.core.wrappers.LazyElement;
-import ua.net.itlabs.core.wrappers.element.LazyFoundByConditionElement;
+import ua.net.itlabs.core.wrappers.element.LazyCollectionFoundByConditionElement;
 import ua.net.itlabs.core.wrappers.element.LazyCollectionNthElement;
 import ua.net.itlabs.core.wrappers.element.LazyWrappedWebElement;
 
@@ -28,8 +28,8 @@ public abstract class AbstractLazyCollection implements LazyCollection{
     }
 
     @Override
-    public LazyCollection filter(ElementCondition... conditions) {
-        return null;
+    public LazyCollection filter(ElementCondition condition) {
+        return new LazyFilteredCollection(this, condition);
     }
 
     @Override
@@ -83,7 +83,7 @@ public abstract class AbstractLazyCollection implements LazyCollection{
 
     @Override
     public LazyElement find(ElementCondition condition) {
-        return new LazyFoundByConditionElement(this, condition);
+        return new LazyCollectionFoundByConditionElement(this, condition);
     }
 
 

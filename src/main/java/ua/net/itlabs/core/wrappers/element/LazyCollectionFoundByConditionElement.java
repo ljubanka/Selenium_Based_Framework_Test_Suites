@@ -5,17 +5,17 @@ import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.core.wrappers.LazyElement;
 
-public class LazyFoundByConditionElement extends AbstractLazyElement{
+public class LazyCollectionFoundByConditionElement extends AbstractLazyElement{
     private LazyCollection parentCollection;
     private ElementCondition condition;
 
-    public LazyFoundByConditionElement(LazyCollection parentCollection, ElementCondition condition) {
+    public LazyCollectionFoundByConditionElement(LazyCollection parentCollection, ElementCondition condition) {
         this.condition = condition;
         this.parentCollection = parentCollection;
     }
 
     @Override
-    public WebElement getWrappedEntity() {
+    public WebElement fetchWrappedEntity() {
         for (LazyElement lazyElement: parentCollection) {
             if (lazyElement.is(condition)) {
                 return lazyElement.getWrappedEntity();
@@ -26,7 +26,7 @@ public class LazyFoundByConditionElement extends AbstractLazyElement{
 
     @Override
     public String toString() {
-        return parentCollection.toString() + " find by condition " + condition.toString();
+        return parentCollection.toString() + " find(" + condition.getClass().getSimpleName() + ")";
     }
 
 }

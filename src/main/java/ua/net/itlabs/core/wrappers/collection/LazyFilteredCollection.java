@@ -14,14 +14,14 @@ public class LazyFilteredCollection extends AbstractLazyCollection {
     private ElementCondition condition;
     private LazyCollection parentCollection;
 
-    public LazyFilteredCollection(ElementCondition condition, LazyCollection parentCollection) {
+    public LazyFilteredCollection(LazyCollection parentCollection, ElementCondition condition) {
         this.condition = condition;
         this.parentCollection = parentCollection;
     }
 
     @Override
     public String toString() {
-        return parentCollection.toString() + " filtered by condition " + condition.toString();
+        return parentCollection.toString() + " filter(" + condition.getClass().getSimpleName() + ")";
     }
 
     @Override

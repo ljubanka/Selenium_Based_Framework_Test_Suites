@@ -1,6 +1,7 @@
 package ua.net.itlabs.core.wrappers.element;
 
 import org.openqa.selenium.WebElement;
+import ua.net.itlabs.core.exceptions.LazyCollectionIndexOutOfBoundsException;
 import ua.net.itlabs.core.wrappers.LazyCollection;
 
 public class LazyCollectionNthElement extends AbstractLazyElement {
@@ -13,8 +14,13 @@ public class LazyCollectionNthElement extends AbstractLazyElement {
     }
 
     @Override
-    public WebElement getWrappedEntity() {
-        return parentCollection.getWrappedEntity().get(index);
+    public WebElement fetchWrappedEntity() {
+        try {
+            return parentCollection.getWrappedEntity().get(index);
+        }
+        catch (IndexOutOfBoundsException e) {
+            throw new LazyCollectionIndexOutOfBoundsException();
+        }
     }
 
     @Override

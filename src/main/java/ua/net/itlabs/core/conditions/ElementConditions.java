@@ -1,14 +1,12 @@
 package ua.net.itlabs.core.conditions;
 
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.element.ExactText;
-import ua.net.itlabs.core.conditions.element.Present;
-import ua.net.itlabs.core.conditions.element.Text;
-import ua.net.itlabs.core.conditions.element.Visible;
+import ua.net.itlabs.core.conditions.element.*;
 
 public class ElementConditions {
     public static final ElementCondition visible = new Visible();
     public static final ElementCondition present = new Present();
+    public static final ElementCondition enabled = new Enabled();
 
     public static ElementCondition text(String expectedText) {
         return new Text(expectedText);

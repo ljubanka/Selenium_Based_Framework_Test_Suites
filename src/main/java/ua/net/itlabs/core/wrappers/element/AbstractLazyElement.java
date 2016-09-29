@@ -2,6 +2,7 @@ package ua.net.itlabs.core.wrappers.element;
 
 import org.openqa.selenium.*;
 import ua.net.itlabs.core.conditions.ElementCondition;
+import ua.net.itlabs.core.exceptions.ElementNotFoundException;
 import ua.net.itlabs.core.wrappers.LazyElement;
 
 import java.util.List;
@@ -13,6 +14,19 @@ import static ua.net.itlabs.core.conditions.ElementConditions.present;
 import static ua.net.itlabs.core.conditions.ElementConditions.visible;
 
 public abstract class AbstractLazyElement implements LazyElement{
+
+    public abstract WebElement fetchWrappedEntity();
+
+    @Override
+    public WebElement getWrappedEntity() {
+        WebElement element = fetchWrappedEntity();
+        if (element == null) {
+            throw new ElementNotFoundException();
+        }
+        else return element;
+    }
+
+
 
     @Override
     public boolean is(ElementCondition condition) {

@@ -15,23 +15,6 @@ public abstract class AbstractCollectionCondition extends AbstractCondition<List
     protected LazyEntity entity;
     public abstract List<WebElement> check(List<WebElement> wrappedEntity);
 
-
-//    public List<WebElement> apply(LazyEntity entity) {
-//        this.entity = entity;
-//        List<WebElement> result = check((List<WebElement>) entity.getWrappedEntity());
-//        if (result != null) {
-//            return result;
-//        }
-//        return null;
-//    }
-//
-//    public String toString() {
-//        return String.format(getClass().getSimpleName() +
-//                "\nfor " + identity() + " from " + entity +
-//                (expected() == "" ? "" : "\nexpected: " + expected()) +
-//                (actual() == "" ? "" : "\nactual: " + actual()));
-//    }
-
     @Override
     public String identity() {
         return "collection";
