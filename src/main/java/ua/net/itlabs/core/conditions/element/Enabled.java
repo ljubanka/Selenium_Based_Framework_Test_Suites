@@ -6,9 +6,9 @@ public class Enabled extends AbstractElementCondition{
     private boolean isEnabled;
 
     @Override
-    public WebElement check(WebElement element) {
+    public boolean check(WebElement element) {
         isEnabled = element.isEnabled();
-        return isEnabled ?element:null;
+        return isEnabled;
     }
 
     @Override

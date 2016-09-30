@@ -19,7 +19,7 @@ public class LazyCollectionNthElement extends AbstractLazyElement {
             return parentCollection.getWrappedEntity().get(index);
         }
         catch (IndexOutOfBoundsException e) {
-            throw new LazyCollectionIndexOutOfBoundsException();
+            throw new LazyCollectionIndexOutOfBoundsException(this.toString());
         }
     }
 

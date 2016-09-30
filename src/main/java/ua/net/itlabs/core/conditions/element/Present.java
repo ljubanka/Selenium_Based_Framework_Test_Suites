@@ -7,9 +7,9 @@ public class Present extends AbstractElementCondition {
     private boolean isPresent;
 
     @Override
-    public WebElement check(WebElement element) {
+    public boolean check(WebElement element) {
         isPresent = (element !=null);
-        return isPresent? element :null;
+        return isPresent;
     }
 
     @Override

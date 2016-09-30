@@ -15,17 +15,17 @@ public class Texts extends AbstractCollectionCondition {
     }
 
     @Override
-    public List<WebElement> check(List<WebElement> elements) {
+    public boolean check(List<WebElement> elements) {
         actualTexts = Helpers.getTexts(elements);
         if (actualTexts.size() != expectedTexts.length) {
-            return null;
+            return false;
         }
         for (int i = 0; i < actualTexts.size(); i++) {
             if (!checkElement(i)) {
-                return null;
+                return false;
             }
         }
-        return elements;
+        return true;
     }
 
     public boolean checkElement(int index) {

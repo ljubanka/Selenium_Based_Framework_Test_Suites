@@ -27,12 +27,18 @@ public class LazyFilteredCollection extends AbstractLazyCollection {
     @Override
     public List<WebElement> getWrappedEntity() {
         List<WebElement> filteredList = new ArrayList<WebElement>();
+        List<WebElement> parentCollectionWebElements = parentCollection.getWrappedEntity();
 
-        for (LazyElement lazyElement: parentCollection) {
-            if (lazyElement.is(condition)) {
-                filteredList.add(lazyElement.getWrappedEntity());
+        for (WebElement element: parentCollectionWebElements) {
+            if (condition.check(element)) {
+                filteredList.add(element);
             }
         }
+//        for (LazyElement lazyElement: parentCollection) {
+//            if (lazyElement.is(condition)) {
+//                filteredList.add(lazyElement.getWrappedEntity());
+//            }
+//        }
         return filteredList;
     }
 }

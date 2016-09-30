@@ -1,5 +1,6 @@
 package ua.net.itlabs.core.wrappers.collection;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import ua.net.itlabs.core.conditions.CollectionCondition;
 import ua.net.itlabs.core.conditions.ElementCondition;
@@ -7,12 +8,14 @@ import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.core.wrappers.LazyElement;
 import ua.net.itlabs.core.wrappers.element.LazyCollectionFoundByConditionElement;
 import ua.net.itlabs.core.wrappers.element.LazyCollectionNthElement;
+import ua.net.itlabs.core.wrappers.element.LazyElementAllInnerElementsByLocatorCollection;
 import ua.net.itlabs.core.wrappers.element.LazyWrappedWebElement;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static ua.net.itlabs.core.ConciseAPI.byCSS;
 import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.conditions.CollectionConditions.sizeOf;
 
@@ -85,6 +88,8 @@ public abstract class AbstractLazyCollection implements LazyCollection{
     public LazyElement find(ElementCondition condition) {
         return new LazyCollectionFoundByConditionElement(this, condition);
     }
+
+
 
 
 }

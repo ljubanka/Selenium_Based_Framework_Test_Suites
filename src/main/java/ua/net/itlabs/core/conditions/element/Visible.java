@@ -6,9 +6,9 @@ public class Visible extends AbstractElementCondition {
     private boolean isVisible;
 
     @Override
-    public WebElement check(WebElement element) {
+    public boolean check(WebElement element) {
         isVisible = element.isDisplayed();
-        return isVisible?element:null;
+        return isVisible;
     }
 
     @Override

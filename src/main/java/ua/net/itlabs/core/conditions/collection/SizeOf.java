@@ -12,9 +12,9 @@ public class SizeOf extends AbstractCollectionCondition {
     }
 
     @Override
-    public List<WebElement> check(List<WebElement> elements) {
+    public boolean check(List<WebElement> elements) {
         listSize = elements.size();
-        return listSize == expectedSize? elements :null;
+        return listSize == expectedSize;
     }
 
     @Override

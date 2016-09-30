@@ -25,7 +25,7 @@ public class WaitFor {
 
         do {
             try {
-                V result = condition.apply(entity);
+                V result = (V) condition.apply(entity);
                 if (result != null) {
                     return result;
                 }

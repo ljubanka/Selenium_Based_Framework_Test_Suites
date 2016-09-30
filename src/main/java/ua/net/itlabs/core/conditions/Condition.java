@@ -4,5 +4,6 @@ import ua.net.itlabs.core.wrappers.LazyEntity;
 
 public interface Condition<T> {
 
-    T apply(LazyEntity entity);
+    T apply(LazyEntity<T> entity);
+    boolean check(T wrappedEntity);
 }

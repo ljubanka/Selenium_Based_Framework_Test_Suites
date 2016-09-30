@@ -11,9 +11,9 @@ public class Text extends AbstractElementCondition {
     }
 
     @Override
-    public WebElement check(WebElement element) {
+    public boolean check(WebElement element) {
         actualText = element.getText();
-        return actualText.contains(expectedText)?element:null;
+        return actualText.contains(expectedText);
     }
 
     @Override

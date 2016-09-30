@@ -3,6 +3,7 @@ package ua.net.itlabs.core.wrappers.element;
 import org.openqa.selenium.*;
 import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.exceptions.ElementNotFoundException;
+import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.core.wrappers.LazyElement;
 
 import java.util.List;
@@ -21,12 +22,10 @@ public abstract class AbstractLazyElement implements LazyElement{
     public WebElement getWrappedEntity() {
         WebElement element = fetchWrappedEntity();
         if (element == null) {
-            throw new ElementNotFoundException();
+            throw new ElementNotFoundException(this.toString());
         }
-        else return element;
+        return element;
     }
-
-
 
     @Override
     public boolean is(ElementCondition condition) {
@@ -58,6 +57,16 @@ public abstract class AbstractLazyElement implements LazyElement{
     @Override
     public LazyElement $(String cssSelector) {
         return find(cssSelector);
+    }
+
+    @Override
+    public LazyCollection findAll(By innerLocator) {
+        return new LazyElementAllInnerElementsByLocatorCollection(this, innerLocator);
+    }
+
+    @Override
+    public LazyCollection findAll(String innerCssSelector) {
+        return findAll(byCSS(innerCssSelector));
     }
 
     @Override

@@ -16,6 +16,10 @@ public class ElementConditions {
         return new ExactText(expectedText);
     }
 
+    public static ElementCondition cssClass(String cssClass) {
+        return new CssClass(cssClass);
+    }
+
 //    public static ElementCondition present() {
 //        return new Present();
 //    }

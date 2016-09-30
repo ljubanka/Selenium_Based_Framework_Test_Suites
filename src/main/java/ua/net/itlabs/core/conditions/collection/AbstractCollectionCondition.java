@@ -13,7 +13,7 @@ import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
 public abstract class AbstractCollectionCondition extends AbstractCondition<List<WebElement>> implements CollectionCondition {
 
     protected LazyEntity entity;
-    public abstract List<WebElement> check(List<WebElement> wrappedEntity);
+    public abstract boolean check(List<WebElement> wrappedEntity);
 
     @Override
     public String identity() {

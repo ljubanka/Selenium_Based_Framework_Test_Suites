@@ -103,8 +103,7 @@ public class TodoMVCPage {
 
     public LazyElement startEdit(String oldTask, String newTask) {
         tasks.find(exactText(oldTask)).find("label").doubleClick();
-        //return tasks.find(exactText(oldTask)).find("label").doubleClick().find(".editing").find(".edit").setValue(newTask);
-        return tasks.find(exactText(oldTask)).find("editing").find(".edit").setValue(newTask);
+        return tasks.find(cssClass("editing")).find(".edit").setValue(newTask);
     }
 
     public void delete(String taskText) {

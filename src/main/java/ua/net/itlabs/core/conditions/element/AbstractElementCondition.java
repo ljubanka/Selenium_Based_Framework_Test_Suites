@@ -10,8 +10,8 @@ import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
 
 public abstract class AbstractElementCondition extends AbstractCondition<WebElement> implements ElementCondition {
 
-    protected LazyEntity entity;
-    public abstract WebElement check(WebElement wrappedEntity);
+    //protected LazyEntity entity;
+    public abstract boolean check(WebElement wrappedEntity);
 
     @Override
     public String identity() {

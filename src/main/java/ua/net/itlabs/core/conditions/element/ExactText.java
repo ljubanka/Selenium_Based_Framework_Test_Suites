@@ -9,9 +9,9 @@ public class ExactText extends Text {
     }
 
     @Override
-    public WebElement check(WebElement element) {
+    public boolean check(WebElement element) {
         actualText = element.getText();
-        return actualText.equals(expectedText)?element:null;
+        return actualText.equals(expectedText);
     }
 
 }

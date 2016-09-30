@@ -20,6 +20,8 @@ public interface LazyElement extends LazyEntity<WebElement>, WebElement {
     LazyElement find(String cssSelector);
     LazyElement $(By locator);
     LazyElement $(String cssSelector);
+    LazyCollection findAll(By innerLocator);
+    LazyCollection findAll(String innerCssSelector);
     boolean is(ElementCondition condition);
 
 }

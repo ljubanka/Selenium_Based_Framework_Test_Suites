@@ -1,6 +1,7 @@
 package ua.net.itlabs.todomvctest;
 
 import org.junit.Test;
+import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.testconfigs.BaseTest;
 import ua.net.itlabs.todomvctest.pages.TodoMVCPage;
 
