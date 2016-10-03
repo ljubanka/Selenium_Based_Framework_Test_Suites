@@ -1,10 +1,9 @@
 package ua.net.itlabs.core.wrappers.element;
 
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.ElementCondition;
+import ua.net.itlabs.core.conditions.element.ElementCondition;
 import ua.net.itlabs.core.exceptions.ElementNotFoundException;
 import ua.net.itlabs.core.wrappers.LazyCollection;
-import ua.net.itlabs.core.wrappers.LazyElement;
 
 import java.util.List;
 

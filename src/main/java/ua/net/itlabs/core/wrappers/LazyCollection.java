@@ -1,10 +1,8 @@
 package ua.net.itlabs.core.wrappers;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.CollectionCondition;
-import ua.net.itlabs.core.conditions.Condition;
-import ua.net.itlabs.core.conditions.ElementCondition;
+import ua.net.itlabs.core.conditions.collection.CollectionCondition;
+import ua.net.itlabs.core.conditions.element.ElementCondition;
 
 import java.util.List;
 

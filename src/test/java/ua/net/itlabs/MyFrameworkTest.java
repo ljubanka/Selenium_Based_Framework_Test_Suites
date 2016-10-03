@@ -8,7 +8,7 @@ import ua.net.itlabs.gmailtest.pages.Gmail;
 import ua.net.itlabs.gmailtest.pages.Mails;
 import ua.net.itlabs.testconfigs.BaseTest;
 
-import static ua.net.itlabs.core.conditions.CollectionConditions.minimumSizeOf;
+import static ua.net.itlabs.core.conditions.CollectionConditions.minimumSize;
 import static ua.net.itlabs.gmailtest.pages.Mails.emails;
 import static ua.net.itlabs.gmailtest.testdata.LoginData.email;
 import static ua.net.itlabs.gmailtest.testdata.LoginData.password;
@@ -26,7 +26,7 @@ public class MyFrameworkTest extends BaseTest {
 
         Gmail.logIn(email, password);
 
-        Mails.emails.shouldHave(minimumSizeOf(1));
+        Mails.emails.shouldHave(minimumSize(1));
         for (LazyElement element:emails) {
             System.out.println(element.getText());
         }

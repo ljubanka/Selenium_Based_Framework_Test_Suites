@@ -1,18 +1,15 @@
 package ua.net.itlabs.core.conditions;
 
-import org.openqa.selenium.WebElement;
 import ua.net.itlabs.core.conditions.collection.*;
-
-import java.util.List;
 
 public class CollectionConditions {
 
-    public static CollectionCondition sizeOf(int expectedSize) {
-        return new SizeOf(expectedSize);
+    public static CollectionCondition size(int expectedSize) {
+        return new Size(expectedSize);
     }
 
-    public static CollectionCondition minimumSizeOf(int expectedSize) {
-        return new MinimumSizeOf(expectedSize);
+    public static CollectionCondition minimumSize(int expectedSize) {
+        return new MinimumSize(expectedSize);
     }
 
     public static CollectionCondition texts(String... expectedTexts) {

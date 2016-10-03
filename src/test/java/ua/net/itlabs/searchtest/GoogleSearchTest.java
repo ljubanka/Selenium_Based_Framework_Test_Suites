@@ -17,7 +17,7 @@ public class GoogleSearchTest extends BaseTest {
         open("http://google.com/ncr");
 
         search("Selenium automates browsers");
-        $$(searchResults).shouldHave(sizeOf(10));
+        $$(searchResults).shouldHave(size(10));
         $$(searchResults).get(0).shouldHave(text("Selenium automates browsers"));
 
         followNthLink(0);
@@ -30,15 +30,13 @@ public class GoogleSearchTest extends BaseTest {
 
         search("Selenium automates browsers");
 
-        followNthLink(1);
+        followNthLink(0);
         assertThat(urlContains("http://www.seleniumhq.org/"));
     }
 
     public String searchResults = ".srg>.g";
 
     public void followNthLink(int index) {
-        //$$(byCSS(searchResults)).shouldHave(minimumSizeOf(index+1));
-        //$$(byCSS(searchResults)).get(index).findElement(byCSS(".r>a")).click();
         $$(searchResults).get(index).find(".r>a").click();
     }
 

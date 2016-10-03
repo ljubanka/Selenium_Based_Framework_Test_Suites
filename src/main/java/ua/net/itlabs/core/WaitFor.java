@@ -29,7 +29,7 @@ public class WaitFor {
                 if (result != null) {
                     return result;
                 }
-            } catch (WebDriverException | IndexOutOfBoundsException e) {
+            } catch (WebDriverException e) {
                 lastError = e;
             }
 

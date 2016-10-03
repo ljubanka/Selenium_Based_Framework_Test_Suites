@@ -1,11 +1,8 @@
 package ua.net.itlabs.core.wrappers.collection;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.CollectionCondition;
-import ua.net.itlabs.core.conditions.ElementCondition;
+import ua.net.itlabs.core.conditions.element.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyCollection;
-import ua.net.itlabs.core.wrappers.LazyElement;
 
 import java.util.ArrayList;
 import java.util.List;

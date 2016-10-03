@@ -2,14 +2,12 @@ package ua.net.itlabs.core.conditions.element;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.internal.Streams;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class CssClass extends AbstractElementCondition {
-    protected String expectedCssClass;
-    protected String actualCssClass;
+    private String expectedCssClass;
+    private String actualCssClass;
 
     public CssClass(String expectedCssClass) {
         this.expectedCssClass = expectedCssClass;

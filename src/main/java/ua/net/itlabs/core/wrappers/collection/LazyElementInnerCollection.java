@@ -1,4 +1,4 @@
-package ua.net.itlabs.core.wrappers.element;
+package ua.net.itlabs.core.wrappers.collection;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -7,11 +7,11 @@ import ua.net.itlabs.core.wrappers.collection.AbstractLazyCollection;
 
 import java.util.List;
 
-public class LazyElementAllInnerElementsByLocatorCollection extends AbstractLazyCollection {
+public class LazyElementInnerCollection extends AbstractLazyCollection {
     private LazyElement parentElement;
     private By innerLocator;
 
-    public LazyElementAllInnerElementsByLocatorCollection(LazyElement parentElement, By innerLocator) {
+    public LazyElementInnerCollection(LazyElement parentElement, By innerLocator) {
         this.parentElement = parentElement;
         this.innerLocator = innerLocator;
     }
@@ -23,6 +23,6 @@ public class LazyElementAllInnerElementsByLocatorCollection extends AbstractLazy
 
     @Override
     public String toString() {
-        return parentElement.toString() + "find(" + innerLocator +")";
+        return parentElement.toString() + "findAll(" + innerLocator +")";
     }
 }

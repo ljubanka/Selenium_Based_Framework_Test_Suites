@@ -7,8 +7,8 @@ import ua.net.itlabs.core.Helpers;
 import java.util.List;
 
 public class Texts extends AbstractCollectionCondition {
-    protected List<String> actualTexts;
-    protected String[] expectedTexts;
+    public List<String> actualTexts;
+    public String[] expectedTexts;
 
     public Texts(String... expectedTexts) {
         this.expectedTexts = expectedTexts;

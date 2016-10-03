@@ -5,8 +5,7 @@ import ua.net.itlabs.core.wrappers.LazyEntity;
 
 public abstract class AbstractCondition<T> implements Condition<T>, DescribesResult{
 
-    protected LazyEntity<T> entity;
-    //public abstract boolean check(T wrappedEntity);
+    public LazyEntity<T> entity;
 
     public T apply(LazyEntity<T> entity) {
         T wrappedEntity = entity.getWrappedEntity();
@@ -14,15 +13,6 @@ public abstract class AbstractCondition<T> implements Condition<T>, DescribesRes
             return wrappedEntity;
         }
             throw new WebDriverAssertionException(this.toString());
-
-
-//        this.entity = entity;
-//        T result = check(entity.getWrappedEntity());
-//        if (result != null) {
-//            return result;
-//        }
-//        throw new WebDriverAssertionException();
-        //return null;
     }
 
     public String toString() {

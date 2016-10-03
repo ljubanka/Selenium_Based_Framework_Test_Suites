@@ -97,7 +97,7 @@ public class TodoMVCPage {
 
     public void add(String... taskTexts) {
         for (String text: taskTexts) {
-            $("#new-todo").shouldBe(enabled).setValue(text).pressEnter();
+            $("#new-todo").shouldBe(enabled()).setValue(text).pressEnter();
         }
     }
 
@@ -136,11 +136,11 @@ public class TodoMVCPage {
     }
 
     public void assertTasks(String... taskTexts) {
-        tasks.filter(visible).shouldHave(texts(taskTexts));
+        tasks.filter(visible()).shouldHave(texts(taskTexts));
     }
 
     public void assertNoTasks() {
-        tasks.filter(visible).shouldHaveSize(0);
+        tasks.filter(visible()).shouldHaveSize(0);
     }
 
     public void assertItemsLeft(int count) {

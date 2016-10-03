@@ -3,11 +3,11 @@ package ua.net.itlabs.core.conditions.collection;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 
-public class SizeOf extends AbstractCollectionCondition {
-    protected int listSize;
-    protected int expectedSize;
+public class Size extends AbstractCollectionCondition {
+    public int listSize;
+    public int expectedSize;
 
-    public SizeOf(int expectedSize) {
+    public Size(int expectedSize) {
         this.expectedSize = expectedSize;
     }
 

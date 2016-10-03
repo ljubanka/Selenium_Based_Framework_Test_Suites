@@ -3,8 +3,8 @@ package ua.net.itlabs.core.conditions.element;
 import org.openqa.selenium.WebElement;
 
 public class Text extends AbstractElementCondition {
-    protected String actualText;
-    protected String expectedText;
+    public String actualText;
+    public String expectedText;
 
     public Text(String expectedText) {
         this.expectedText = expectedText;

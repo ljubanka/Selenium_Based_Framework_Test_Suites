@@ -1,11 +1,7 @@
 package ua.net.itlabs.core.wrappers.element;
 
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.ElementCondition;
-import ua.net.itlabs.core.wrappers.LazyElement;
 import ua.net.itlabs.core.wrappers.LazyEntity;
-
-import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
 
 public class LazyWrappedWebElement extends AbstractLazyElement{
 
