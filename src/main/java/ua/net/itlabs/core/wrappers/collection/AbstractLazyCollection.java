@@ -2,6 +2,7 @@ package ua.net.itlabs.core.wrappers.collection;
 
 import org.openqa.selenium.WebElement;
 import ua.net.itlabs.core.conditions.CollectionConditions;
+import ua.net.itlabs.core.conditions.DescribesEntity;
 import ua.net.itlabs.core.conditions.collection.CollectionCondition;
 import ua.net.itlabs.core.conditions.element.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyCollection;
@@ -16,7 +17,7 @@ import java.util.List;
 
 import static ua.net.itlabs.core.WaitFor.waitFor;
 
-public abstract class AbstractLazyCollection implements LazyCollection{
+public abstract class AbstractLazyCollection implements LazyCollection, DescribesEntity<List<WebElement>> {
 
     @Override
     public Iterator<LazyElement> iterator() {
@@ -86,7 +87,9 @@ public abstract class AbstractLazyCollection implements LazyCollection{
         return new LazyCollectionFoundByConditionElement(this, condition);
     }
 
-
-
+    @Override
+    public String identity() {
+        return "collection";
+    }
 
 }

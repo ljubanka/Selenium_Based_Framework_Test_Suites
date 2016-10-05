@@ -8,13 +8,4 @@ import java.util.List;
 
 public abstract class AbstractCollectionCondition extends AbstractCondition<List<WebElement>> implements CollectionCondition {
 
-    public LazyEntity entity;
-    public abstract boolean check(List<WebElement> wrappedEntity);
-
-    @Override
-    public String identity() {
-        return "collection";
-    }
-
-
 }

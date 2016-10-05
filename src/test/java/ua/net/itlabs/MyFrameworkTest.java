@@ -17,7 +17,7 @@ public class MyFrameworkTest extends BaseTest {
 
     @BeforeClass
     public static void config() {
-        Configuration.timeoutMs = 16000;
+        Configuration.timeoutMs = 36000;
     }
 
     @Test

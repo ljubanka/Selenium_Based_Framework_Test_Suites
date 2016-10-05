@@ -3,7 +3,7 @@ package ua.net.itlabs.core.conditions.element;
 import org.openqa.selenium.WebElement;
 
 public class Enabled extends AbstractElementCondition{
-    private boolean isEnabled;
+    public boolean isEnabled;
 
     @Override
     public boolean check(WebElement element) {

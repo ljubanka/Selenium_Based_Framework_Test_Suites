@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import java.util.Arrays;
 
 public class CssClass extends AbstractElementCondition {
-    private String expectedCssClass;
-    private String actualCssClass;
+    public String expectedCssClass;
+    public String actualCssClass;
 
     public CssClass(String expectedCssClass) {
         this.expectedCssClass = expectedCssClass;

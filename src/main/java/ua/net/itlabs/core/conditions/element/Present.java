@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 
 public class Present extends AbstractElementCondition {
 
-    private boolean isPresent;
+    public boolean isPresent;
 
     @Override
     public boolean check(WebElement element) {

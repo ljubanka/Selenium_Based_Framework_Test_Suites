@@ -17,7 +17,7 @@ public abstract class AbstractCondition<T> implements Condition<T>, DescribesRes
 
     public String toString() {
         return String.format(getClass().getSimpleName() +
-                "\nfor " + identity() + " found by " + entity +
+                "\nfor " + entity.identity() + " found by " + entity +
                 (expected() == "" ? "" : "\nexpected: " + expected()) +
                 (actual() == "" ? "" : "\nactual: " + actual()));
     }

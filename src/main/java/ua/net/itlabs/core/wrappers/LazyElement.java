@@ -6,6 +6,7 @@ import ua.net.itlabs.core.conditions.element.ElementCondition;
 
 public interface LazyElement extends LazyEntity<WebElement>, WebElement {
 
+    //Void clear();
     LazyElement should(ElementCondition... conditions);
     LazyElement shouldBe(ElementCondition... conditions);
     LazyElement shouldHave(ElementCondition... conditions);

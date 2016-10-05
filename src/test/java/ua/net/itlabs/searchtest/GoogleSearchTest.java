@@ -2,6 +2,7 @@ package ua.net.itlabs.searchtest;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.testconfigs.BaseTest;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;
@@ -17,8 +18,8 @@ public class GoogleSearchTest extends BaseTest {
         open("http://google.com/ncr");
 
         search("Selenium automates browsers");
-        $$(searchResults).shouldHave(size(10));
-        $$(searchResults).get(0).shouldHave(text("Selenium automates browsers"));
+        searchResults.shouldHave(size(10));
+        searchResults.get(0).shouldHave(text("Selenium automates browsers"));
 
         followNthLink(0);
         assertThat(urlContains("http://www.seleniumhq.org/"));
@@ -34,10 +35,10 @@ public class GoogleSearchTest extends BaseTest {
         assertThat(urlContains("http://www.seleniumhq.org/"));
     }
 
-    public String searchResults = ".srg>.g";
+    public LazyCollection searchResults = $$(".srg>.g");
 
     public void followNthLink(int index) {
-        $$(searchResults).get(index).find(".r>a").click();
+        searchResults.get(index).find(".r>a").click();
     }
 
     public void search(String queryText) {
