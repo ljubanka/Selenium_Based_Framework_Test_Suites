@@ -14,5 +14,4 @@ public class MinimumSize extends Size {
         listSize = elements.size();
         return listSize >= expectedSize;
     }
-
 }

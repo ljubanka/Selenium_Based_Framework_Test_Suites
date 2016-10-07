@@ -3,7 +3,6 @@ package ua.net.itlabs.core.conditions;
 import ua.net.itlabs.core.conditions.element.*;
 
 public class ElementConditions {
-
     public static ElementCondition text(String expectedText) {
         return new Text(expectedText);
     }

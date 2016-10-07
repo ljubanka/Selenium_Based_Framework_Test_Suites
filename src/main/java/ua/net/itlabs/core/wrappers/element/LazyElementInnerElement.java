@@ -1,6 +1,5 @@
 package ua.net.itlabs.core.wrappers.element;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import ua.net.itlabs.core.wrappers.LazyElement;
@@ -23,4 +22,5 @@ public class LazyElementInnerElement extends AbstractLazyElement {
     public String toString() {
         return parentElement.toString() + " find(" + innerLocator + ")";
     }
+
 }

@@ -4,15 +4,15 @@ import ua.net.itlabs.core.exceptions.WebDriverAssertionException;
 import ua.net.itlabs.core.wrappers.LazyEntity;
 
 public abstract class AbstractCondition<T> implements Condition<T>, DescribesResult{
-
     public LazyEntity<T> entity;
 
     public T apply(LazyEntity<T> entity) {
+        this.entity = entity;
         T wrappedEntity = entity.getWrappedEntity();
         if (check(wrappedEntity)) {
             return wrappedEntity;
         }
-            throw new WebDriverAssertionException(this.toString());
+        throw new WebDriverAssertionException(this.toString());
     }
 
     public String toString() {

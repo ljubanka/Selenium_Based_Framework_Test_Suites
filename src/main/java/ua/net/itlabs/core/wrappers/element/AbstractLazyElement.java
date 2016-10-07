@@ -1,14 +1,13 @@
 package ua.net.itlabs.core.wrappers.element;
 
 import org.openqa.selenium.*;
-import ua.net.itlabs.core.conditions.DescribesEntity;
-import ua.net.itlabs.core.wrappers.Command;
-import ua.net.itlabs.core.conditions.element.ElementCondition;
+import ua.net.itlabs.core.wrappers.DescribesEntity;
+import ua.net.itlabs.core.Command;
+import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.exceptions.ElementNotFoundException;
 import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.core.wrappers.LazyElement;
 import ua.net.itlabs.core.wrappers.collection.LazyElementInnerCollection;
-
 import java.util.List;
 
 import static ua.net.itlabs.core.ConciseAPI.actions;
@@ -16,10 +15,9 @@ import static ua.net.itlabs.core.ConciseAPI.byCSS;
 import static ua.net.itlabs.core.WaitFor.waitFor;
 import static ua.net.itlabs.core.conditions.ElementConditions.present;
 import static ua.net.itlabs.core.conditions.ElementConditions.visible;
-import static ua.net.itlabs.core.wrappers.WithWaitFor.withWaitFor;
+import static ua.net.itlabs.core.WithWaitFor.withWaitFor;
 
 public abstract class AbstractLazyElement implements LazyElement, DescribesEntity<WebElement>{
-
     public abstract WebElement fetchWrappedEntity();
 
     @Override
@@ -89,15 +87,17 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
     }
 
     @Override
-    public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
-        WebElement element = waitFor(this).until(visible());
-        return element.getScreenshotAs(outputType);
+    public <X> X getScreenshotAs(final OutputType<X> outputType) throws WebDriverException {
+        return withWaitFor(this, visible()).run(new Command<X>() {
+            @Override
+            public X action(WebElement element) {
+                return element.getScreenshotAs(outputType);
+            }
+        });
     }
 
     @Override
     public void click() {
-//        WebElement element = waitFor(this).until(visible());
-//        element.click();
         withWaitFor(this, visible()).run(new Command<Void>() {
             @Override
             public Void action(WebElement element) {
@@ -109,8 +109,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public void submit() {
-//        WebElement element = waitFor(this).until(visible());
-//        element.submit();
         withWaitFor(this, visible()).run(new Command<Void>() {
             @Override
             public Void action(WebElement element) {
@@ -122,9 +120,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public LazyElement doubleClick() {
-//        WebElement element = waitFor(this).until(visible());
-//        actions().doubleClick(element).perform();
-//        return this;
         withWaitFor(this, visible()).run(new Command<WebElement>() {
             @Override
             public WebElement action(WebElement element) {
@@ -137,10 +132,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public LazyElement hover() {
-        //WebElement element = waitFor(this).until(visible());
-//        actions().moveToElement(element).perform();
-//        return this;
-
         withWaitFor(this, visible()).run(new Command<WebElement>() {
             @Override
             public WebElement action(WebElement element) {
@@ -153,11 +144,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public LazyElement setValue(final String text) {
-//        WebElement element = waitFor(this).until(visible());
-//        element.clear();
-//        element.sendKeys(text);
-//        return this;
-        //withWaitFor(this, visible()).run(new SetValue(text));
         withWaitFor(this, visible()).run(new Command<WebElement>() {
             @Override
             public WebElement action(WebElement element) {
@@ -171,7 +157,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public void clear() {
-        //waitFor(this).until(visible()).clear();
         withWaitFor(this, visible()).run(new Command<Void>() {
             @Override
             public Void action(WebElement element) {
@@ -183,15 +168,12 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public String getTagName() {
-//        WebElement element = waitFor(this).until(present());
-//        return element.getTagName();
         return withWaitFor(this, present()).run(new Command<String>() {
             @Override
             public String action(WebElement element) {
                 return element.getTagName();
             }
         });
-
     }
 
     @Override
@@ -206,8 +188,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public boolean isSelected() {
-//        WebElement element = waitFor(this).until(visible());
-//        return element.isSelected();
         return withWaitFor(this, visible()).run(new Command<Boolean>() {
             @Override
             public Boolean action(WebElement element) {
@@ -218,8 +198,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public boolean isEnabled() {
-//        WebElement element = waitFor(this).until(visible());
-//        return element.isEnabled();
         return withWaitFor(this, visible()).run(new Command<Boolean>() {
             @Override
             public Boolean action(WebElement element) {
@@ -230,8 +208,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public String getText() {
-//        WebElement element = waitFor(this).until(visible());
-//        return element.getText();
         return withWaitFor(this, visible()).run(new Command<String>() {
             @Override
             public String action(WebElement element) {
@@ -242,8 +218,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public List<WebElement> findElements(final By by) {
-//        WebElement element = waitFor(this).until(present());
-//        return element.findElements(by);
         return withWaitFor(this, present()).run(new Command<List<WebElement>>() {
             @Override
             public List<WebElement> action(WebElement element) {
@@ -254,8 +228,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public WebElement findElement(final By by) {
-//        WebElement element = waitFor(this).until(present());
-//        return element.findElement(by);
         return withWaitFor(this, present()).run(new Command<WebElement>() {
             @Override
             public WebElement action(WebElement element) {
@@ -266,8 +238,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public boolean isDisplayed() {
-//        WebElement element = waitFor(this).until(present());
-//        return element.isDisplayed();
         return withWaitFor(this, present()).run(new Command<Boolean>() {
             @Override
             public Boolean action(WebElement element) {
@@ -278,8 +248,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public Point getLocation() {
-//        WebElement element = waitFor(this).until(visible());
-//        return element.getLocation();
         return withWaitFor(this, visible()).run(new Command<Point>() {
             @Override
             public Point action(WebElement element) {
@@ -290,8 +258,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public Dimension getSize() {
-//        WebElement element = waitFor(this).until(visible());
-//        return element.getSize();
         return withWaitFor(this, visible()).run(new Command<Dimension>() {
             @Override
             public Dimension action(WebElement element) {
@@ -302,8 +268,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public Rectangle getRect() {
-//        WebElement element = waitFor(this).until(visible());
-//        return element.getRect();
         return withWaitFor(this, visible()).run(new Command<Rectangle>() {
             @Override
             public Rectangle action(WebElement element) {
@@ -314,8 +278,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public String getCssValue(final String cssProperty) {
-//        WebElement element = waitFor(this).until(present());
-//        return element.getCssValue(cssProperty);
         return withWaitFor(this, present()).run(new Command<String>() {
             @Override
             public String action(WebElement element) {
@@ -326,8 +288,6 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
 
     @Override
     public void sendKeys(final CharSequence... chars) {
-//        WebElement element = waitFor(this).until(visible());
-//        element.sendKeys(chars);
         withWaitFor(this, visible()).run(new Command<Void>() {
             @Override
             public Void action(WebElement element) {
@@ -359,4 +319,5 @@ public abstract class AbstractLazyElement implements LazyElement, DescribesEntit
     public String identity() {
         return "element";
     }
+
 }

@@ -2,11 +2,9 @@ package ua.net.itlabs.core.wrappers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.element.ElementCondition;
+import ua.net.itlabs.core.conditions.ElementCondition;
 
 public interface LazyElement extends LazyEntity<WebElement>, WebElement {
-
-    //Void clear();
     LazyElement should(ElementCondition... conditions);
     LazyElement shouldBe(ElementCondition... conditions);
     LazyElement shouldHave(ElementCondition... conditions);

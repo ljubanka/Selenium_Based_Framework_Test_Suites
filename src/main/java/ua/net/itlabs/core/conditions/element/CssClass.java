@@ -21,7 +21,6 @@ public class CssClass extends AbstractElementCondition {
             return true;
         }
         return false;
-
     }
 
     @Override
@@ -33,4 +32,5 @@ public class CssClass extends AbstractElementCondition {
     public String actual() {
         return actualCssClass;
     }
+
 }

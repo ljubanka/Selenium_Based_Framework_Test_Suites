@@ -1,8 +1,8 @@
 package ua.net.itlabs.core.wrappers;
 
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.collection.CollectionCondition;
-import ua.net.itlabs.core.conditions.element.ElementCondition;
+import ua.net.itlabs.core.conditions.CollectionCondition;
+import ua.net.itlabs.core.conditions.ElementCondition;
 
 import java.util.List;
 
@@ -17,8 +17,5 @@ public interface LazyCollection extends LazyEntity<List<WebElement>>, Iterable<L
     int size();
     boolean isEmpty();
     String[] getTexts();
-
-
-
 
 }

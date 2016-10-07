@@ -1,16 +1,16 @@
 package ua.net.itlabs.core.wrappers.collection;
 
 import org.openqa.selenium.WebElement;
+import ua.net.itlabs.core.Helpers;
+import ua.net.itlabs.core.conditions.CollectionCondition;
 import ua.net.itlabs.core.conditions.CollectionConditions;
-import ua.net.itlabs.core.conditions.DescribesEntity;
-import ua.net.itlabs.core.conditions.collection.CollectionCondition;
-import ua.net.itlabs.core.conditions.element.ElementCondition;
+import ua.net.itlabs.core.wrappers.DescribesEntity;
+import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.core.wrappers.LazyElement;
 import ua.net.itlabs.core.wrappers.element.LazyCollectionFoundByConditionElement;
 import ua.net.itlabs.core.wrappers.element.LazyCollectionNthElement;
 import ua.net.itlabs.core.wrappers.element.LazyWrappedWebElement;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -70,11 +70,7 @@ public abstract class AbstractLazyCollection implements LazyCollection, Describe
     @Override
     public String[] getTexts() {
         List<WebElement> elements = this.getWrappedEntity();
-        String[] result = new String[elements.size()];
-        for (int i=0; i<elements.size(); i++) {
-            result[i] = elements.get(i).getText();
-        }
-        return result;
+        return Helpers.getTexts(elements).toArray(new String[elements.size()]);
     }
 
     @Override

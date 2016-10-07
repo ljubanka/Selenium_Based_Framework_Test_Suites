@@ -1,9 +1,8 @@
 package ua.net.itlabs.core.wrappers.collection;
 
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.element.ElementCondition;
+import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.wrappers.LazyCollection;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +30,7 @@ public class LazyFilteredCollection extends AbstractLazyCollection {
                 filteredList.add(element);
             }
         }
-//        for (LazyElement lazyElement: parentCollection) {
-//            if (lazyElement.is(condition)) {
-//                filteredList.add(lazyElement.getWrappedEntity());
-//            }
-//        }
         return filteredList;
     }
+
 }

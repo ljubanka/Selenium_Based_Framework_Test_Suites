@@ -44,4 +44,5 @@ public class TodoMVCCompletedFilterTest extends BaseTest {
         page.assertNoTasks();
         page.assertItemsLeft(2);
     }
+
 }

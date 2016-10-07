@@ -29,4 +29,5 @@ public class Mails {
     }
 
     public static LazyCollection emails = $$("[role='main'] .zA");
+
 }

@@ -76,6 +76,4 @@ public class ConciseAPI {
         return (new WebDriverWait(getWebDriver(), timeoutMs/1000)).until(condition);
     }
 
-
-
 }

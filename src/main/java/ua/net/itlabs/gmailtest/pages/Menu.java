@@ -15,4 +15,5 @@ public class Menu {
     public static void goToInbox() {
         $(byTitle("Inbox")).click();
     }
+
 }

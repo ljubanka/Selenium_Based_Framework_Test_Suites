@@ -1,10 +1,9 @@
 package ua.net.itlabs.core.wrappers.element;
 
 import org.openqa.selenium.WebElement;
-import ua.net.itlabs.core.conditions.element.ElementCondition;
+import ua.net.itlabs.core.conditions.ElementCondition;
 import ua.net.itlabs.core.exceptions.ElementNotFoundException;
 import ua.net.itlabs.core.wrappers.LazyCollection;
-
 import java.util.List;
 
 public class LazyCollectionFoundByConditionElement extends AbstractLazyElement{
@@ -19,17 +18,11 @@ public class LazyCollectionFoundByConditionElement extends AbstractLazyElement{
     @Override
     public WebElement fetchWrappedEntity() {
         List<WebElement> parentCollectionWebElements = parentCollection.getWrappedEntity();
-
         for (WebElement element: parentCollectionWebElements) {
             if (condition.check(element)) {
                 return element;
             }
         }
-//        for (LazyElement lazyElement: parentCollection) {
-//            if (lazyElement.is(condition)) {
-//                return lazyElement.getWrappedEntity();
-//            }
-//        }
         throw new ElementNotFoundException(this.toString());
     }
 

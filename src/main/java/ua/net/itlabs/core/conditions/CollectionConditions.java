@@ -3,7 +3,6 @@ package ua.net.itlabs.core.conditions;
 import ua.net.itlabs.core.conditions.collection.*;
 
 public class CollectionConditions {
-
     public static CollectionCondition size(int expectedSize) {
         return new Size(expectedSize);
     }

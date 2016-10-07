@@ -1,5 +1,6 @@
-package ua.net.itlabs.core.conditions;
+package ua.net.itlabs.core.wrappers;
 
 public interface DescribesEntity<T> {
     String identity();
+
 }

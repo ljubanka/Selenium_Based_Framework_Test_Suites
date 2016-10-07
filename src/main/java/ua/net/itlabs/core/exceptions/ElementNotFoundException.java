@@ -6,4 +6,5 @@ public class ElementNotFoundException extends WebDriverException {
     public ElementNotFoundException(String message) {
         super(message);
     }
+
 }

@@ -9,7 +9,6 @@ import static ua.net.itlabs.todomvctest.pages.TodoMVCPage.TaskType.COMPLETED;
 
 public class TodoMVCGeneralTest extends BaseTest {
 
-
     TodoMVCPage page = new TodoMVCPage();
 
     @Test

@@ -31,4 +31,5 @@ public class MyFrameworkTest extends BaseTest {
             System.out.println(element.getText());
         }
     }
+
 }

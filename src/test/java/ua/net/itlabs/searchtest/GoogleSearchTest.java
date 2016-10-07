@@ -12,7 +12,6 @@ import static ua.net.itlabs.core.conditions.CollectionConditions.*;
 import static ua.net.itlabs.core.conditions.ElementConditions.text;
 
 public class GoogleSearchTest extends BaseTest {
-
     @Test
     public void testSearchAndFollowLink() {
         open("http://google.com/ncr");

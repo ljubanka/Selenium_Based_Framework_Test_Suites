@@ -1,12 +1,9 @@
 package ua.net.itlabs.core.wrappers.element;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
-import static ua.net.itlabs.core.WaitFor.waitFor;
-import static ua.net.itlabs.core.conditions.ElementConditions.visible;
 
 public class LazyWebDriverElement extends AbstractLazyElement {
     private By locator;
@@ -24,6 +21,5 @@ public class LazyWebDriverElement extends AbstractLazyElement {
     public String toString() {
         return locator.toString();
     }
-
 
 }

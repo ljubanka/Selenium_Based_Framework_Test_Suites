@@ -1,7 +1,6 @@
 package ua.net.itlabs.todomvctest;
 
 import org.junit.Test;
-import org.openqa.selenium.Keys;
 import ua.net.itlabs.testconfigs.BaseTest;
 import ua.net.itlabs.todomvctest.pages.TodoMVCPage;
 
@@ -72,4 +71,5 @@ public class TodoMVCAllFilterTest extends BaseTest {
         page.startEdit("2", "").pressEnter();
         page.assertTasks("1", "3");
     }
+
 }

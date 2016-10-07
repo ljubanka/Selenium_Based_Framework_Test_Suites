@@ -8,8 +8,6 @@ import ua.net.itlabs.gmailtest.pages.Mails;
 import ua.net.itlabs.gmailtest.pages.Menu;
 import ua.net.itlabs.testconfigs.BaseTest;
 
-import static java.lang.Thread.sleep;
-import static ua.net.itlabs.core.ConciseAPI.$$;
 import static ua.net.itlabs.core.Helpers.getUniqueText;
 import static ua.net.itlabs.gmailtest.testdata.LoginData.email;
 import static ua.net.itlabs.gmailtest.testdata.LoginData.password;

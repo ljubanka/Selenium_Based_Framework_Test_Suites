@@ -1,7 +1,6 @@
 package ua.net.itlabs.todomvctest;
 
 import org.junit.Test;
-import ua.net.itlabs.core.wrappers.LazyCollection;
 import ua.net.itlabs.testconfigs.BaseTest;
 import ua.net.itlabs.todomvctest.pages.TodoMVCPage;
 
@@ -9,9 +8,7 @@ import static ua.net.itlabs.core.ConciseAPI.$;
 import static ua.net.itlabs.todomvctest.pages.TodoMVCPage.TaskType.ACTIVE;
 import static ua.net.itlabs.todomvctest.pages.TodoMVCPage.TaskType.COMPLETED;
 
-
 public class TodoMVCActiveFilterTest extends BaseTest {
-
     TodoMVCPage page = new TodoMVCPage();
 
     @Test
@@ -67,4 +64,5 @@ public class TodoMVCActiveFilterTest extends BaseTest {
         page.assertTasks("1", "2 edited");
         page.assertItemsLeft(2);
     }
+
 }

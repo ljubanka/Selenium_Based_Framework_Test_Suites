@@ -32,7 +32,6 @@ public class WaitFor {
             } catch (WebDriverException e) {
                 lastError = e;
             }
-
             sleep(Configuration.pollingInterval);
         }
         while (System.currentTimeMillis() - startTime < timeoutMs);

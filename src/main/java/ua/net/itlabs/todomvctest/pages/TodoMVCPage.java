@@ -107,8 +107,7 @@ public class TodoMVCPage {
     }
 
     public void delete(String taskText) {
-        tasks.find(exactText(taskText)).hover();
-        tasks.find(exactText(taskText)).find(".destroy").click();
+        tasks.find(exactText(taskText)).hover().find(".destroy").click();
     }
 
     public void toggle(String taskText) {
@@ -146,4 +145,5 @@ public class TodoMVCPage {
     public void assertItemsLeft(int count) {
         $("#todo-count>strong").shouldHave(exactText(Integer.toString(count)));
     }
+
 }

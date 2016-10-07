@@ -3,8 +3,6 @@ package ua.net.itlabs.core.wrappers.collection;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import ua.net.itlabs.core.wrappers.LazyElement;
-import ua.net.itlabs.core.wrappers.collection.AbstractLazyCollection;
-
 import java.util.List;
 
 public class LazyElementInnerCollection extends AbstractLazyCollection {
@@ -25,4 +23,5 @@ public class LazyElementInnerCollection extends AbstractLazyCollection {
     public String toString() {
         return parentElement.toString() + "findAll(" + innerLocator +")";
     }
+
 }

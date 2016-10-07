@@ -6,4 +6,5 @@ public class WebDriverAssertionException extends WebDriverException {
     public WebDriverAssertionException(String message) {
         super(message);
     }
+
 }

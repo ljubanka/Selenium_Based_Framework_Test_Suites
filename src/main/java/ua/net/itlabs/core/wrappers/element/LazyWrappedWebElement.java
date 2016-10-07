@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import ua.net.itlabs.core.wrappers.LazyEntity;
 
 public class LazyWrappedWebElement extends AbstractLazyElement{
-
     private WebElement element;
     private LazyEntity parentEntity;
 

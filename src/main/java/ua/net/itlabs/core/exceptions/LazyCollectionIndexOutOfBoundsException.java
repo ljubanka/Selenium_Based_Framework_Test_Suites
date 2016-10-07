@@ -6,4 +6,5 @@ public class LazyCollectionIndexOutOfBoundsException extends WebDriverException 
     public LazyCollectionIndexOutOfBoundsException(String message) {
         super(message);
     }
+
 }

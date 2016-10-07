@@ -1,7 +1,8 @@
-package ua.net.itlabs.core.wrappers;
+package ua.net.itlabs.core;
 
 import org.openqa.selenium.WebDriverException;
-import ua.net.itlabs.core.conditions.element.ElementCondition;
+import ua.net.itlabs.core.conditions.ElementCondition;
+import ua.net.itlabs.core.wrappers.LazyElement;
 
 import static ua.net.itlabs.core.WaitFor.waitFor;
 
