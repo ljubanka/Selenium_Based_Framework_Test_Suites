@@ -25,7 +25,7 @@ public class LazyCollectionNthElement extends AbstractLazyElement {
 
     @Override
     public String toString() {
-        return "parentCollection[" + index + "] = ";
+        return parentCollection.toString() + "[" + index + "] = ";
     }
 
 }

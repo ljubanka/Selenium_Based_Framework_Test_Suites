@@ -17,7 +17,7 @@ import java.util.List;
 
 import static ua.net.itlabs.core.WaitFor.waitFor;
 
-public abstract class AbstractLazyCollection implements LazyCollection, DescribesEntity<List<WebElement>> {
+public abstract class AbstractLazyCollection implements LazyCollection, DescribesEntity {
 
     @Override
     public Iterator<LazyElement> iterator() {

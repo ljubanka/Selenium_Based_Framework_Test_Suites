@@ -16,11 +16,6 @@ public class LazyFilteredCollection extends AbstractLazyCollection {
     }
 
     @Override
-    public String toString() {
-        return parentCollection.toString() + " filter(" + condition.getClass().getSimpleName() + ")";
-    }
-
-    @Override
     public List<WebElement> getWrappedEntity() {
         List<WebElement> filteredList = new ArrayList<WebElement>();
         List<WebElement> parentCollectionWebElements = parentCollection.getWrappedEntity();
@@ -31,6 +26,11 @@ public class LazyFilteredCollection extends AbstractLazyCollection {
             }
         }
         return filteredList;
+    }
+
+    @Override
+    public String toString() {
+        return parentCollection.toString() + " filter(" + condition.getClass().getSimpleName() + ")";
     }
 
 }

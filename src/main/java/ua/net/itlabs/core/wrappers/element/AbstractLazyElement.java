@@ -17,7 +17,7 @@ import static ua.net.itlabs.core.conditions.ElementConditions.present;
 import static ua.net.itlabs.core.conditions.ElementConditions.visible;
 import static ua.net.itlabs.core.WithWaitFor.withWaitFor;
 
-public abstract class AbstractLazyElement implements LazyElement, DescribesEntity<WebElement>{
+public abstract class AbstractLazyElement implements LazyElement, DescribesEntity {
     public abstract WebElement fetchWrappedEntity();
 
     @Override
